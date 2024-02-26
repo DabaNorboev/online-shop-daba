@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/public/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/main.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/post_login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/post_registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/post_registrate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/registrate.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +30,9 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -31,25 +41,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/daba/Рабочий стол/projects/online-shop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daba/Рабочий стол/projects/online-shop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -80,7 +90,12 @@
       <workItem from="1708515949585" duration="952000" />
       <workItem from="1708522092025" duration="11000" />
       <workItem from="1708522377113" duration="3104000" />
-      <workItem from="1708574409287" duration="9154000" />
+      <workItem from="1708574409287" duration="9587000" />
+      <workItem from="1708584093390" duration="6000" />
+      <workItem from="1708603505817" duration="894000" />
+      <workItem from="1708745491416" duration="3133000" />
+      <workItem from="1708855782450" duration="10061000" />
+      <workItem from="1708963266907" duration="8922000" />
     </task>
     <servers />
   </component>

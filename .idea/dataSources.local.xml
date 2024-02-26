@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PS-233.14475.35">
-    <data-source name="laravel@localhost" uuid="161b71f9-a476-4a8a-b9a8-f94b04cb1911">
+    <data-source name="laravel@localhost" uuid="4fb15bc5-0a9f-4559-a4be-d7784f9b6f44">
       <database-info product="PostgreSQL" version="10.1" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="10.1" exact-driver-version="42.6">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
