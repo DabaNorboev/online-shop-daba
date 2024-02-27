@@ -14,9 +14,19 @@ if (isset($_POST['name'])) {
 
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
+
     if (empty($email)) {
         $errors['email'] = 'Поле электронной почты не должно быть пустым';
-    }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    }elseif (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $pdo = NEW PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+
+        $result = $stmt->fetch();
+        if (!empty($result)) {
+            $errors['email'] = 'Пользователь с таким email уже существует';
+        }
+    }else {
         $errors['email'] = 'Некорректный формат электронной почты';
     }
 }else {
@@ -52,15 +62,8 @@ if (isset($_POST['psw-repeat'])) {
 if (empty($errors)) {
     $password = password_hash($password,PASSWORD_DEFAULT);
 
-    $pdo = NEW PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
-
     $stmt = $pdo->prepare("INSERT INTO users (name,email,password) VALUES (:name, :email, :password)");
     $stmt->execute(['name' => $name, 'email' => $email, 'password' => $password]);
-
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-
-    $result = $stmt->fetch();
 
 }
 require_once './registrate.php';

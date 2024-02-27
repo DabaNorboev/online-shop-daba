@@ -27,13 +27,16 @@ if (empty($errors)) {
 
     $user = $stmt->fetch();
     if (empty($user)) {
-        $errors['email'] = 'неправильный логин или пароль';
+        $errors['email'] = 'неправильный email или пароль';
     } else {
         if (password_verify($password, $user['password'])) {
-            setcookie('user_id', $user['id']);
-            echo ' verify success';
+            //setcookie('user_id', $user['id']);
+            print_r($user);
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+            //header('Location: /main.php');
         } else {
-            $errors['email'] = 'неправильный логин или пароль';
+            $errors['email'] = 'неправильный email или пароль';
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="laravel@localhost" uuid="4fb15bc5-0a9f-4559-a4be-d7784f9b6f44">
+    <data-source source="LOCAL" name="laravel@localhost" uuid="7ac603e9-fcb1-46d4-ac4a-c835b8210e23">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

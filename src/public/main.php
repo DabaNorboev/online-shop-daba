@@ -1,6 +1,16 @@
 <?php
-if (!isset($_COOKIE['user_id'])) {
+session_start();
+if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
+}
+//if (!isset($_COOKIE['user_id'])) {
+//    header('Location: /login.php');
+//}
+$pdo = NEW PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
+$stmt = $pdo->query("SELECT * FROM products");
+$products = $stmt->fetchAll();
+if (empty($products)) {
+    die();
 }
 ?>
 <!DOCTYPE html>
@@ -14,62 +24,17 @@ if (!isset($_COOKIE['user_id'])) {
 </head>
 
 <body>
-<h2>Каталог потрясных товаров</h2>
+<h2>Каталог товаров</h2>
 <ul class="catalog">
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
-    <li class="catalog-item">
-        <h3>Потрясный товар</h3>
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050228.png" alt="Изображение товара">
-        <p class="price">1.999 тугриков</p>
-        <button class="accept">Возьми меня</button>
-    </li>
+    <?php foreach ($products as $product): ?>
+        <li class="catalog-item">
+            <h3><?php echo $product['name'] ?></h3>
+            <img src="<?php echo $product['img_url'] ?>" alt="Изображение товара">
+            <p class="price"><?php echo $product['price'] ?> руб</p>
+            <p><?php echo $product['description'] ?></p>
+    <!--        <button class="accept">Возьми меня</button>-->
+        </li>
+    <?php endforeach; ?>
 </ul>
 </body>
 

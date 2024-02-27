@@ -9,7 +9,7 @@
 <!-- FORMULAIRE DE CONNEXION -->
 <div class="card">
     <h2>Login form</h2>
-    <h5><?php  if (empty($errors)){ echo "login success";} else {echo "Wrong password or email";}?></h5>
+    <h5><?php  echo $errors['email'] ?? ''; ?></h5>
 
     <!-- SE CONNECTER / S'INSCRIRE -->
     <div class="login_register">
@@ -23,8 +23,10 @@ https://codepen.io/pen?template=VwRgKYB
 
     <!-- FORMULAIRE -->
     <form class="form" action="post_login.php" method="POST">
-        <input name = "email" type="email" placeholder=<?php echo $errors['email'] ?? 'Email address';?> class="email">
-        <input name = "password" type="password" placeholder=<?php echo $errors['password'] ?? 'Password';?> class="pass">
+        <label style="color: red"><?php echo $errors['email'] ?? '';?></label>
+        <input name = "email" type="email" placeholder='Email address' class="email">
+        <label style="color: red"><?php echo $errors['email'] ?? '';?></label>
+        <input name = "password" type="password" placeholder='Password' class="pass">
         <button type="submit" class="login_btn">Login</button>
     </form>
 

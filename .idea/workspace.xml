@@ -5,13 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/public/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/public/main.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/public/post_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/post_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/post_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/post_registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/post_registrate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/registrate.php" afterDir="false" />
     </list>
@@ -95,7 +115,8 @@
       <workItem from="1708603505817" duration="894000" />
       <workItem from="1708745491416" duration="3133000" />
       <workItem from="1708855782450" duration="10061000" />
-      <workItem from="1708963266907" duration="8922000" />
+      <workItem from="1708963266907" duration="21040000" />
+      <workItem from="1709026170384" duration="955000" />
     </task>
     <servers />
   </component>

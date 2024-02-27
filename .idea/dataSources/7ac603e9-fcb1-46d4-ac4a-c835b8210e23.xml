@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="laravel@db">
+<dataSource name="laravel@localhost">
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.51">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>560</IntrospectionStateNumber>
+      <IntrospectionStateNumber>584</IntrospectionStateNumber>
       <ServerVersion>10.1</ServerVersion>
-      <StartupTime>1708940383</StartupTime>
+      <StartupTime>1708961076</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1417,7 +1417,7 @@ false posixrules
 12703||10|C|G
 12703||-9223372036854775808|U|G
 12703||10|U|G</Grants>
-      <IntrospectionStateNumber>560</IntrospectionStateNumber>
+      <IntrospectionStateNumber>584</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -1426,25 +1426,10 @@ false posixrules
       <ObjectId>12994</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
-    <role id="4" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
-      <RoleGrants>3374
-3375
-3377</RoleGrants>
-    </role>
-    <role id="5" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-    </role>
-    <role id="6" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-    </role>
-    <role id="7" parent="1" name="pg_signal_backend">
+    <role id="4" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
     </role>
-    <role id="8" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
-    </role>
-    <role id="9" parent="1" name="postgres">
+    <role id="5" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
@@ -1452,6 +1437,21 @@ false posixrules
       <ObjectId>10</ObjectId>
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
+    </role>
+    <role id="6" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="7" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <RoleGrants>3374
+3375
+3377</RoleGrants>
+    </role>
+    <role id="8" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
     </role>
     <role id="10" parent="1" name="root">
       <CanLogin>1</CanLogin>
@@ -4666,70 +4666,226 @@ false posixrules
     <schema id="245" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>560</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-02-26.09:49:09</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>584</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-02-26.16:43:00</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>351</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
-    <sequence id="246" parent="245" name="users_id_seq">
+    <sequence id="246" parent="245" name="cart_id_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>24653</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>577</StateNumber>
+      <OwnerName>root</OwnerName>
+    </sequence>
+    <sequence id="247" parent="245" name="products_id_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>24578</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>561</StateNumber>
+      <OwnerName>root</OwnerName>
+    </sequence>
+    <sequence id="248" parent="245" name="users_id_seq">
       <DasType>integer|0s</DasType>
       <ObjectId>16386</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>559</StateNumber>
+      <StateNumber>558</StateNumber>
       <OwnerName>root</OwnerName>
     </sequence>
-    <table id="247" parent="245" name="users">
-      <ObjectId>16388</ObjectId>
-      <StateNumber>559</StateNumber>
+    <table id="249" parent="245" name="cart">
+      <ObjectId>24655</ObjectId>
+      <StateNumber>577</StateNumber>
       <OwnerName>root</OwnerName>
     </table>
-    <column id="248" parent="247" name="id">
+    <table id="250" parent="245" name="products">
+      <ObjectId>24580</ObjectId>
+      <StateNumber>577</StateNumber>
+      <OwnerName>root</OwnerName>
+    </table>
+    <table id="251" parent="245" name="users">
+      <ObjectId>16388</ObjectId>
+      <StateNumber>577</StateNumber>
+      <OwnerName>root</OwnerName>
+    </table>
+    <column id="252" parent="249" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;cart_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>577</StateNumber>
+      <SequenceId>24653</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="253" parent="249" name="user_id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>577</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="254" parent="249" name="product_id">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>577</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="255" parent="249" name="quantity">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>577</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="256" parent="249" name="cart_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24661</ObjectId>
+      <StateNumber>577</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16388</RefTableId>
+    </foreign-key>
+    <foreign-key id="257" parent="249" name="cart_product_id_fkey">
+      <ColNames>product_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24666</ObjectId>
+      <StateNumber>577</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>24580</RefTableId>
+    </foreign-key>
+    <index id="258" parent="249" name="cart_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24659</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>577</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="259" parent="249" name="cart_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24660</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>577</StateNumber>
+      <UnderlyingIndexId>24659</UnderlyingIndexId>
+    </key>
+    <column id="260" parent="250" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;products_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>561</StateNumber>
+      <SequenceId>24578</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="261" parent="250" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>561</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="262" parent="250" name="description">
+      <DasType>text|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>561</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="263" parent="250" name="price">
+      <DasType>numeric(10,2 digit)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>561</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="264" parent="250" name="img_url">
+      <DasType>text|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>561</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="265" parent="250" name="products_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24587</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>561</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="266" parent="250" name="products_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24588</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>561</StateNumber>
+      <UnderlyingIndexId>24587</UnderlyingIndexId>
+    </key>
+    <column id="267" parent="251" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>559</StateNumber>
+      <StateNumber>558</StateNumber>
       <SequenceId>16386</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="249" parent="247" name="name">
+    <column id="268" parent="251" name="name">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>559</StateNumber>
+      <StateNumber>558</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="250" parent="247" name="email">
+    <column id="269" parent="251" name="email">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>559</StateNumber>
+      <StateNumber>558</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="251" parent="247" name="password">
+    <column id="270" parent="251" name="password">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>559</StateNumber>
+      <StateNumber>558</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="252" parent="247" name="users_pkey">
+    <index id="271" parent="251" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16395</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>559</StateNumber>
+      <StateNumber>558</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="253" parent="247" name="users_pkey">
+    <index id="272" parent="251" name="users_email_key">
+      <ColNames>email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16397</ObjectId>
+      <StateNumber>558</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="273" parent="251" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16396</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>559</StateNumber>
+      <StateNumber>558</StateNumber>
       <UnderlyingIndexId>16395</UnderlyingIndexId>
+    </key>
+    <key id="274" parent="251" name="users_email_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16398</ObjectId>
+      <StateNumber>558</StateNumber>
+      <UnderlyingIndexId>16397</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
