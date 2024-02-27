@@ -16,9 +16,10 @@ services:
     build: ./.docker
     restart: always
     volumes:
-      - '/home/daba/Рабочий стол/projects/online-shop/.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini:rw'
-      - './.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini'
+#      - '/home/daba/Рабочий стол/projects/online-shop/.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini:rw'
+      - './.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini'
       - './src/public:/var/www/html/src/public'
+      - '.:/var/www/html'
     env_file:
       - .env
 

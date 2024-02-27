@@ -10,7 +10,18 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.0" />
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="localhost" id="fc9837dd-61f6-46ed-85d5-dbdbb95c9bdf" name="Unnamed" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html" />
+          <mapping local-root="$PROJECT_DIR$/src" remote-root="var/www/html/src" />
+          <mapping local-root="$PROJECT_DIR$/src/public" remote-root="var/www/html/src/public" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>

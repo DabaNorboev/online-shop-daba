@@ -5,35 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/161b71f9-a476-4a8a-b9a8-f94b04cb1911/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4fb15bc5-0a9f-4559-a4be-d7784f9b6f44/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c1a1f92-5fda-4933-a8a0-fe662ce0856d/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/de822acc-88cf-4792-9696-be2a8a3a9797/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/conf/php/xdebug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/conf/php/xdebug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/post_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/post_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/post_registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/post_registrate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/registrate.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +28,18 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="fc9837dd-61f6-46ed-85d5-dbdbb95c9bdf" name="Unnamed" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html" />
+          <mapping local-root="$PROJECT_DIR$/src" remote-root="var/www/html/src" />
+          <mapping local-root="$PROJECT_DIR$/src/public" remote-root="var/www/html/src/public" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -61,25 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/daba/Рабочий стол/projects/online-shop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.test.php.executor": "Run",
+    "PHP Script.post_registrate.php.executor": "Run",
+    "PHP Script.test.php.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/daba/Рабочий стол/projects/online-shop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.php.debug.servers",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -116,11 +111,34 @@
       <workItem from="1708745491416" duration="3133000" />
       <workItem from="1708855782450" duration="10061000" />
       <workItem from="1708963266907" duration="21040000" />
-      <workItem from="1709026170384" duration="955000" />
+      <workItem from="1709026170384" duration="18386000" />
+      <workItem from="1709058792994" duration="359000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/public/post_registrate.php</url>
+          <line>47</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
