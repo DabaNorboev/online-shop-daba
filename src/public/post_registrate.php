@@ -1,8 +1,8 @@
 <?php
-function validate(array $array): array
+function validate(array $array, PDO $pdo): array
 {
-    global $pdo, $values;
     $errors = [];
+    $values = [];
 
     foreach ($array as $key=>$value)
     {
@@ -42,13 +42,11 @@ function validate(array $array): array
             $errors[$key] = "Это поле не должно быть пустым";
         }
     }
-    return $errors;
+    return [$errors, $values];
 }
 
-$values = [];
-
 $pdo = NEW PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
-$errors = validate($_POST);
+[$errors, $values] = validate($_POST, $pdo);
 
 if (empty($errors)) {
     [$name, $email, $password,$repeatPassword] = array_values($values);
@@ -57,6 +55,6 @@ if (empty($errors)) {
 
     $stmt = $pdo->prepare("INSERT INTO users (name,email,password) VALUES (:name, :email, :password)");
     $stmt->execute(['name' => $name, 'email' => $email, 'password' => $password]);
-    //header('Location: ./login.php');
+    header('Location: ./login.php');
 }
 require_once './registrate.php';

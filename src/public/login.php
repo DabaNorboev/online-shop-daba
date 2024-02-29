@@ -2,32 +2,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Login Form</title>
+    <title>Авторизация</title>
 </head>
 <body>
 
 <!-- FORMULAIRE DE CONNEXION -->
 <div class="card">
-    <h2>Login form</h2>
+    <h2>Авторизация</h2>
     <h5><?php  echo $errors['email'] ?? ''; ?></h5>
 
     <!-- SE CONNECTER / S'INSCRIRE -->
     <div class="login_register">
         <a href="
 https://codepen.io/pen?template=gOEqMVq
-" class="login" target="blank">Login</a>
+" class="login" target="blank"></a>
         <a href="
-https://codepen.io/pen?template=VwRgKYB
-" class="register" target="blank">Signup</a>
+https://codepen.io/pen?template=gOEqMVq
+" class="login" target="blank"></a>
     </div>
 
     <!-- FORMULAIRE -->
     <form class="form" action="post_login.php" method="POST">
         <label style="color: red"><?php echo $errors['email'] ?? '';?></label>
-        <input name = "email" type="email" placeholder='Email address' class="email">
+        <input name = "email" type="email" placeholder='Введите email' class="email">
         <label style="color: red"><?php echo $errors['email'] ?? '';?></label>
-        <input name = "password" type="password" placeholder='Password' class="pass">
-        <button type="submit" class="login_btn">Login</button>
+        <input name = "password" type="password" placeholder='Пароль' class="pass">
+        <button type="submit" class="login_btn">Войти</button>
     </form>
 
 </div>

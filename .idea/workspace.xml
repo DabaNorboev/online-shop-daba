@@ -5,22 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/public/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/add-product.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/post_add-product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/conf/nginx/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/conf/nginx/default.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/conf/php/php.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/conf/php/php.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.docker/conf/php/xdebug.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/conf/php/xdebug.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7ac603e9-fcb1-46d4-ac4a-c835b8210e23/storage_v2/_src_/database/laravel.uWob_Q/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/post_login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/post_login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/post_registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/post_registrate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/registrate.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution />
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,7 +48,7 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpDebugGeneral" break_at_first_line="true" />
   <component name="PhpServers">
     <servers>
       <server host="localhost" id="fc9837dd-61f6-46ed-85d5-dbdbb95c9bdf" name="Unnamed" use_path_mappings="true">
@@ -52,29 +72,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.test.php.executor": "Run",
-    "PHP Script.post_registrate.php.executor": "Run",
-    "PHP Script.test.php.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/daba/Рабочий стол/projects/online-shop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.php.debug.servers",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.test.php.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.post_registrate.php.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.test.php.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daba/Рабочий стол/projects/online-shop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.php.debug.servers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -113,6 +133,10 @@
       <workItem from="1708963266907" duration="21040000" />
       <workItem from="1709026170384" duration="18386000" />
       <workItem from="1709058792994" duration="359000" />
+      <workItem from="1709059170901" duration="188000" />
+      <workItem from="1709187947874" duration="705000" />
+      <workItem from="1709188658753" duration="8068000" />
+      <workItem from="1709204045221" duration="4050000" />
     </task>
     <servers />
   </component>
@@ -129,16 +153,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/public/post_registrate.php</url>
-          <line>47</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

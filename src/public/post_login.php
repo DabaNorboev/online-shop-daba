@@ -1,8 +1,8 @@
 <?php
 function validate(array $array): array
 {
-    global $values;
     $errors = [];
+    $values = [];
 
     foreach ($array as $key => $value) {
         if (isset($value)) {
@@ -23,11 +23,10 @@ function validate(array $array): array
             $errors[$key] = "Это поле не должно быть пустым";
         }
     }
-    return $errors;
+    return [$errors, $values];
 }
 
-$values = [];
-$errors = validate($_POST);
+[$errors, $values] = validate($_POST);
 
 if (empty($errors)) {
     [$email, $password] = array_values($values);
