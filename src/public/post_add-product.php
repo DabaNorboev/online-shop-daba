@@ -13,7 +13,7 @@ function validate(array $array, PDO $pdo): array
             }elseif ($key === 'product_id') {
                 if (ctype_digit($value)) {
                     $pdo = new PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
-                    $stmt = $pdo->query("SELECT product_id FROM products");
+                    $stmt = $pdo->query("SELECT id FROM products");
                     $productIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
                     if (!in_array($value,$productIds)) {
                         $errors[$key] = 'Продукта с таким id не существует';
