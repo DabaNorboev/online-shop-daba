@@ -50,6 +50,10 @@ $pdo = NEW PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
 
 if (empty($errors)) {
     [$name, $email, $password,$repeatPassword] = array_values($values);
+    $name = $values['name'];
+    $email = $values['email'];
+    $password = $values['psw'];
+    $repeatPassword = $values['psw-repeat'];
 
     $password = password_hash($password,PASSWORD_DEFAULT);
 

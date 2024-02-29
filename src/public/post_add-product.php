@@ -14,7 +14,7 @@ function validate(array $array, PDO $pdo): array
                 if (ctype_digit($value)) {
                     $pdo = new PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
                     $stmt = $pdo->query("SELECT id FROM products");
-                    $productIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
+                    $productIds = $stmt->fetchAll();
                     if (!in_array($value,$productIds)) {
                         $errors[$key] = 'Продукта с таким id не существует';
                     }
@@ -40,10 +40,10 @@ $pdo = NEW PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
 
 if (empty($errors)) {
     $user_id = $_SESSION['user_id'];
-    [$product_id, $quantity] = array_values($values);
+    $product_id = $values['product_id'];
+    $quantity = $values['quantity'];
 
     $stmt = $pdo->prepare("INSERT INTO user_products (user_id,product_id,quantity) VALUES (:user_id, :product_id, :quantity)");
     $stmt->execute(['user_id' => $user_id, 'product_id' => $product_id, 'quantity' => $quantity]);
-    $result = $stmt->fetch();
 }
 
