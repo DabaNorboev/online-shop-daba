@@ -1,6 +1,13 @@
 <?php
+require_once './../Model/User.php';
 class UserController
 {
+    private User $userModel;
+    public function __construct()
+    {
+        $this->userModel = new User();
+    }
+
     public function getRegistrate(): void
     {
         require_once './../View/registrate.php';
@@ -8,18 +15,16 @@ class UserController
 
     public function postRegistrate(): void
     {
-        $errors = $this->validateRegistrate($_POST)['errors'];
-        $values = $this->validateRegistrate($_POST)['values'];
+        $errors = $this->validateRegistrate($_POST);
 
         if (empty($errors)) {
-            $name = $values['name'];
-            $email = $values['email'];
-            $password = $values['psw'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['psw'];
 
             $password = password_hash($password,PASSWORD_DEFAULT);
 
-            $userModel = new User();
-            $userModel->create($name, $email, $password);
+            $this->userModel->create($name, $email, $password);
             header('Location: login');
         }
 
@@ -29,12 +34,12 @@ class UserController
     private function validateRegistrate(array $array): array
     {
         $errors = [];
-        $values = [];
-
+        $email = $array['email'];
+        $password = $array['psw'];
+        $user = $this->userModel->getUserByEmail($email);
         foreach ($array as $key=>$value)
         {
             if (isset($value)){
-                $values[$key] = $value;
                 if (empty($value)) {
                     $errors[$key] = "Это поле не должно быть пустым";
                 }elseif($key === 'name') {
@@ -42,10 +47,7 @@ class UserController
                         $errors['name'] = 'Минимально допустимая длина имени - 2 символа';
                     }
                 }elseif ($key === 'email') {
-                    $email = $value;
                     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        $userModel = new User();
-                        $user = $userModel->getUserByEmail($email);
                         if (!empty($user)) {
                             $errors['email'] = 'Пользователь с таким email уже существует';
                         }
@@ -58,7 +60,6 @@ class UserController
                     }elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/', $value)) {
                         $errors['psw'] = 'Пароль должен содержать минимум одну заглавную букву, одну строчную букву и одну цифру';
                     }
-                    $password = $value;
                 }elseif ($key === 'psw-repeat') {
                     if ($value !== $password) {
                         $errors['psw-repeat'] = 'Пароли не совпадают';
@@ -68,7 +69,7 @@ class UserController
                 $errors[$key] = "Это поле не должно быть пустым";
             }
         }
-        return ['errors' => $errors, 'values' => $values];
+        return $errors;
     }
 
     public function getLogin (): void
@@ -78,14 +79,12 @@ class UserController
 
     public function postLogin(): void
     {
-        $errors = $this->validateLogin($_POST)['errors'];
-        $values = $this->validateLogin($_POST)['values'];
+        $errors = $this->validateLogin($_POST);
 
         if (empty($errors)) {
-            $email = $values["email"];
+            $email = $_POST["email"];
 
-            $userModel = new User();
-            $user = $userModel->getUserByEmail($email);
+            $user = $this->userModel->getUserByEmail($email);
 
             if (empty($user)) {
                 $errors['email'] = 'неправильный email или пароль';
@@ -101,14 +100,10 @@ class UserController
     private function validateLogin(array $array) : array
     {
         $errors = [];
-        $values = [];
-
+        $email = $array['email'];
+        $user = $this->userModel->getUserByEmail($email);
         if (isset($array['email'])) {
-            $email = $array['email'];
-            $values['email'] = $email;
             if (!empty($email)) {
-                $userModel = new User();
-                $user = $userModel->getUserByEmail($email);
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $errors['email'] = 'Некорректный формат электронной почты';
                 } elseif (empty($user)) {
@@ -123,7 +118,6 @@ class UserController
 
         if (isset($array['password'])) {
             $password = $array['password'];
-            $values['password'] = $password;
             if (!empty($password)) {
 
                 if (empty($user)) {
@@ -137,15 +131,6 @@ class UserController
         } else {
             $errors['psw'] = 'Это поле не должно быть пустым';
         }
-        return ['errors' => $errors, 'values' => $values];
-    }
-
-    public function checkSession(): void
-    {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: /login");
-        }
+        return $errors;
     }
 }
-require_once './../Model/User.php';

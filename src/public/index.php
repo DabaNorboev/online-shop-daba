@@ -27,7 +27,9 @@ if ($uri === '/registrate') {
     $obj = new MainController();
     if ($method === 'GET') {
         $obj->getMain();
-    } else {
+    } elseif ($method === "POST"){
+        $obj->postAddProduct();
+    }else {
         echo "$method не поддерживается для адреса $uri";
     }
 } elseif ($uri === '/add-product') {
@@ -35,8 +37,6 @@ if ($uri === '/registrate') {
     $obj = new ProductController();
     if ($method === 'GET') {
         $obj->getAddProduct();
-    } elseif ($method === 'POST') {
-        $obj->postAddProduct();
     } else {
         echo "$method не поддерживается для адреса $uri";
     }

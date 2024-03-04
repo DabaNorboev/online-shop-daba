@@ -8,7 +8,11 @@ class User
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
 
-        return $stmt->fetch();
+        $user = $stmt->fetch();
+        if (empty($user)) {
+            $user = [];
+        }
+        return $user;
     }
      public function create(string $name, string $email, string $password): void
      {

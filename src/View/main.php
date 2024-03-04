@@ -1,15 +1,5 @@
 <?php
-require_once './../Controller/UserController.php';
-$usr = new UserController();
-$usr -> checkSession();
-
-require_once './../Controller/ProductController.php';
-$productModel = new Product();
-$products = $productModel->getAll();
-if (empty($products)) {
-    echo "Товары закончились";
-    die();
-}
+require_once './../Controller/MainController.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -24,16 +14,25 @@ if (empty($products)) {
 <body>
 <h2>Каталог товаров</h2>
 <ul class="catalog">
+
     <?php foreach ($products as $product): ?>
+    <form action = "main" method = "post">
         <li class="catalog-item">
             <h3><?php echo $product['name'] ?></h3>
             <img src="<?php echo $product['img_url'] ?>" alt="Изображение товара">
             <p class="price"><?php echo $product['price'] ?> руб</p>
             <p><?php echo $product['description'] ?></p>
-    <!--        <button class="accept">Возьми меня</button>-->
+            <input type="hidden" placeholder="Введите id товара" name="product_id" id="product_id" required value = "<?php echo $product['id'] ?>">
+            <label for="psw"><b>Количество</b></label>
+
+            <input type="text" placeholder="Введите количество" name="quantity" id="quantity" required>
+            <button type="submit" class="registerbtn">Добавить в корзину</button>
         </li>
+    </form>
     <?php endforeach; ?>
+
 </ul>
+<p style="color: black"><?php echo $errors['quantity'] ?? $notification ?? '';?></p>
 </body>
 
 </html>

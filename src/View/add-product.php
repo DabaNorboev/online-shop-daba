@@ -1,8 +1,3 @@
-<?php
-require_once './../Controller/UserController.php';
-$usr = new UserController();
-$usr -> checkSession();
-?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +14,7 @@ $usr -> checkSession();
         <p style="color: red"><?php echo $errors['product_id'] ?? '';?></p>
         <input type="text" placeholder="Введите id товара" name="product_id" id="product_id" required>
 
-        <label for="psw"><b>Количество</b></label>
+
         <label style = "color: red"><?php echo $errors['quantity'] ?? '';?></label>
         <input type="text" placeholder="Введите количество" name="quantity" id="quantity" required>
 
