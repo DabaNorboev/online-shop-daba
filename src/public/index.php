@@ -3,36 +3,44 @@ $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($uri === '/registrate') {
+    require_once './../Controller/UserController.php';
+    $obj = new UserController();
     if ($method === 'GET') {
-        require_once 'registrate.php';
+        $obj->getRegistrate();
     } elseif ($method === 'POST') {
-        require_once 'post_registrate.php';
+        $obj->postRegistrate();
     } else {
         echo "$method не поддерживается для адреса $uri";
     }
 } elseif ($uri === '/login') {
+    require_once './../Controller/UserController.php';
+    $obj = new UserController();
     if ($method === 'GET') {
-        require_once 'login.php';
+        $obj->getLogin();
     } elseif ($method === 'POST') {
-        require_once 'post_login.php';
+        $obj->postLogin();
     } else {
         echo "$method не поддерживается для адреса $uri";
     }
 } elseif ($uri === '/main') {
+    require_once './../Controller/MainController.php';
+    $obj = new MainController();
     if ($method === 'GET') {
-        require_once 'main.php';
+        $obj->getMain();
     } else {
         echo "$method не поддерживается для адреса $uri";
     }
 } elseif ($uri === '/add-product') {
+    require_once './../Controller/ProductController.php';
+    $obj = new ProductController();
     if ($method === 'GET') {
-        require_once 'add-product.php';
+        $obj->getAddProduct();
     } elseif ($method === 'POST') {
-        require_once 'post_add-product.php';
+        $obj->postAddProduct();
     } else {
         echo "$method не поддерживается для адреса $uri";
     }
 }
 else {
-    require_once '404.html';
+    require_once './../View/404.html';
 }

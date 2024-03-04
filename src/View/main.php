@@ -1,11 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: /login.php');
-}
-$pdo = NEW PDO("pgsql:host=db; port=5432; dbname=laravel", 'root', 'root');
-$stmt = $pdo->query("SELECT * FROM products");
-$products = $stmt->fetchAll();
+require_once './../Controller/UserController.php';
+$usr = new UserController();
+$usr -> checkSession();
+
+require_once './../Controller/ProductController.php';
+$productModel = new Product();
+$products = $productModel->getAll();
 if (empty($products)) {
     echo "Товары закончились";
     die();

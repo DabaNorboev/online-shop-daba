@@ -9,7 +9,6 @@
 <!-- FORMULAIRE DE CONNEXION -->
 <div class="card">
     <h2>Авторизация</h2>
-    <h5><?php  echo $errors['email'] ?? ''; ?></h5>
 
     <!-- SE CONNECTER / S'INSCRIRE -->
     <div class="login_register">
@@ -22,7 +21,7 @@ https://codepen.io/pen?template=gOEqMVq
     </div>
 
     <!-- FORMULAIRE -->
-    <form class="form" action="post_login.php" method="POST">
+    <form class="form" action="login" method="POST">
         <label style="color: red"><?php echo $errors['email'] ?? '';?></label>
         <input name = "email" type="email" placeholder='Введите email' class="email">
         <label style="color: red"><?php echo $errors['email'] ?? '';?></label>

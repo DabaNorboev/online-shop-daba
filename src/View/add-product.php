@@ -1,32 +1,31 @@
+<?php
+require_once './../Controller/UserController.php';
+$usr = new UserController();
+$usr -> checkSession();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Регистрация</title>
+    <title>Покупка товаров</title>
 </head>
-<form action="post_registrate.php" method="post">
+<form action="add-product" method="post">
     <div class="container">
-        <h1>Регистрация</h1>
-        <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
-        <hr>
-        <label for="name"><b>Имя</b></label>
-        <label style="color: red"><?php echo $errors['name'] ?? '';?></label>
-        <input type="text" placeholder="Введите имя" name="name" id="name" required>
-
-        <label for="email"><b>Email</b></label>
-        <label style="color: red"><?php echo $errors['email'] ?? '';?></label>
-        <input type="text" placeholder="Введите email" name="email" id="email" required>
-
-        <label for="psw"><b>Пароль</b></label>
-        <label style = "color: red"><?php echo $errors['psw'] ?? '';?></label>
-        <input type="password" placeholder="Введите пароль" name="psw" id="psw" required>
-
-        <label for="psw-repeat"><b>Повтор пароля</b></label>
-        <label style = "color:red"><?php echo $errors['psw-repeat'] ?? '';?></label>
-        <input type="password" placeholder="Введите повтор пароля" name="psw-repeat" id="psw-repeat" required>
+<!--        <h1>Регистрация</h1>-->
+        <p>Пожалуйста, заполните эту форму, чтобы совершить покупку.</p>
         <hr>
 
-        <button type="submit" class="registerbtn">Зарегистрироваться</button>
+        <label for="email"><b>Id продукта</b></label>
+        <p style="color: red"><?php echo $errors['product_id'] ?? '';?></p>
+        <input type="text" placeholder="Введите id товара" name="product_id" id="product_id" required>
+
+        <label for="psw"><b>Количество</b></label>
+        <label style = "color: red"><?php echo $errors['quantity'] ?? '';?></label>
+        <input type="text" placeholder="Введите количество" name="quantity" id="quantity" required>
+
+        <hr>
+
+        <button type="submit" class="registerbtn">Купить</button>
     </div>
 
 </form>
