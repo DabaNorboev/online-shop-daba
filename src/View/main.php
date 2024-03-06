@@ -1,6 +1,3 @@
-<?php
-require_once './../Controller/MainController.php';
-?>
 <!DOCTYPE html>
 <html lang="ru">
 

@@ -1,5 +1,4 @@
 <?php
-require_once './../Model/User.php';
 class UserController
 {
     private User $userModel;
@@ -31,13 +30,13 @@ class UserController
         require_once './../View/registrate.php';
     }
 
-    private function validateRegistrate(array $array): array
+    private function validateRegistrate(array $userData): array
     {
         $errors = [];
-        $email = $array['email'];
-        $password = $array['psw'];
+        $email = $userData['email'];
+        $password = $userData['psw'];
         $user = $this->userModel->getUserByEmail($email);
-        foreach ($array as $key=>$value)
+        foreach ($userData as $key=> $value)
         {
             if (isset($value)){
                 if (empty($value)) {
@@ -97,12 +96,12 @@ class UserController
         require_once './../View/login.php';
     }
 
-    private function validateLogin(array $array) : array
+    private function validateLogin(array $userData) : array
     {
         $errors = [];
-        $email = $array['email'];
+        $email = $userData['email'];
         $user = $this->userModel->getUserByEmail($email);
-        if (isset($array['email'])) {
+        if (isset($userData['email'])) {
             if (!empty($email)) {
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $errors['email'] = 'Некорректный формат электронной почты';
@@ -116,8 +115,8 @@ class UserController
             $errors['email'] = 'Это поле не должно быть пустым';
         }
 
-        if (isset($array['password'])) {
-            $password = $array['password'];
+        if (isset($userData['password'])) {
+            $password = $userData['password'];
             if (!empty($password)) {
 
                 if (empty($user)) {
