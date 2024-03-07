@@ -16,4 +16,5 @@ class MainController
         $products = $this->productModel->getAll();
         require_once './../View/main.php';
     }
+
 }

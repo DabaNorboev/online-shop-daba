@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model/Model.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/App.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/Autoloader.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserProduct.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,6 +127,8 @@
       <workItem from="1709460330563" duration="1384000" />
       <workItem from="1709547591484" duration="16008000" />
       <workItem from="1709641868577" duration="7422000" />
+      <workItem from="1709725876878" duration="1069000" />
+      <workItem from="1709728019001" duration="13966000" />
     </task>
     <servers />
   </component>

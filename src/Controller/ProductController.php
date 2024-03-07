@@ -27,7 +27,13 @@ class ProductController
             $productId = $_POST['product_id'];
             $quantity = $_POST['quantity'];
 
-            $this->userProductModel->addProduct($userId, $productId, $quantity);
+            $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
+            if (empty($userProduct)) {
+                $this->userProductModel->add($userId, $productId, $quantity);
+            }
+            else {
+                $this->userProductModel->update($userId, $productId, $quantity);
+            }
             $notification  = "Товар успешно добавлен в количестве $quantity шт";
 
         }
