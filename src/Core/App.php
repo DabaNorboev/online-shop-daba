@@ -27,16 +27,27 @@ class App
             if ($method === 'GET') {
                 $obj = new MainController();
                 $obj->getMain();
-            } elseif ($method === "POST"){
-                $obj = new ProductController();
-                $obj->postAddProduct();
-            }else {
+            }
+//            elseif ($method === "POST"){
+//                $obj = new ProductController();
+//                $obj->postAddProduct();
+//            }
+            else {
                 echo "$method не поддерживается для адреса $uri";
             }
         } elseif ($uri === '/add-product') {
             $obj = new ProductController();
             if ($method === 'GET') {
                 $obj->getAddProduct();
+            } elseif ($method === "POST"){
+                $obj->postAddProduct();
+            } else {
+                echo "$method не поддерживается для адреса $uri";
+            }
+        } elseif ($uri === '/rm-product') {
+            $obj = new ProductController();
+            if ($method === "POST"){
+                $obj->removeProduct();
             } else {
                 echo "$method не поддерживается для адреса $uri";
             }
@@ -44,6 +55,13 @@ class App
             $obj = new CartController();
             if ($method === 'GET') {
                 $obj->getCart();
+            } else {
+                echo "$method не поддерживается для адреса $uri";
+            }
+        } elseif ($uri === '/logout') {
+            $obj = new UserController();
+            if ($method === 'POST') {
+                $obj->logout();
             } else {
                 echo "$method не поддерживается для адреса $uri";
             }

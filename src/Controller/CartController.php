@@ -11,38 +11,53 @@ class CartController
     public function getCart(): void
     {
         session_start();
-        $userId = $_SESSION['user_id'];
-        if (!isset($userId)) {
+        if (!isset($_SESSION['user_id'])){
             header("Location: /login");
         }
-        $cartAndTotalPrice = $this->createCart($userId);
-        $cart = $cartAndTotalPrice['cart'];
-        $totalPrice = $cartAndTotalPrice['total_price'];
-        if (empty($cart)) {
-            $notification = "Корзина пуста";
-        }
+        $userId = $_SESSION['user_id'];
+        $productsOfCart = $this->getProductsOfCart($userId);
+        $totalPrice = $this->getTotalPrice($productsOfCart);
         require_once './../View/cart.php';
     }
-    public function createCart($userId): array
+    public function getProductsOfCart($userId): array
     {
         $products = $this->productModel->getAll();
         $userProducts = $this->userProductModel->getAllByUserId($userId);
-        $cart = [];
-        $totalPrice = 0;
-        foreach ($userProducts as $userProduct) {
-            $productOfCart = [];
-            foreach ($products as $product) {
-                if ($product['id'] === $userProduct['product_id']) {
-                    $productOfCart['name'] = $product['name'];
-                    $productOfCart['img_url'] = $product['img_url'];
-                    $productOfCart['price'] = $product['price'];
-                    $productOfCart['quantity'] = $userProduct['quantity'];
-                    $productOfCart['sum'] = $productOfCart['quantity'] * $productOfCart['price'];
-                    $totalPrice += $productOfCart['sum'];
+        $productsOfCart = [];
+        if (!empty($userProducts)) {
+            foreach ($userProducts as $userProduct) {
+                $productOfCart = [];
+                foreach ($products as $product) {
+                    if ($product['id'] === $userProduct['product_id']) {
+                        $productOfCart['name'] = $product['name'];
+                        $productOfCart['img_url'] = $product['img_url'];
+                        $productOfCart['price'] = $product['price'];
+                        $productOfCart['quantity'] = $userProduct['quantity'];
+                        $productOfCart['sum'] = $productOfCart['quantity'] * $productOfCart['price'];
+                    }
                 }
+                $productsOfCart[] = $productOfCart;
             }
-            $cart[] = $productOfCart;
         }
-        return ['cart' => $cart, 'total_price' => $totalPrice];
+
+        return $productsOfCart;
     }
+    public function getTotalPrice(array $products): int
+    {
+        $totalPrice = 0;
+        if (!empty($products)){
+            foreach($products as $product){
+                $totalPrice += $product['sum'];
+            }
+        }
+        return $totalPrice;
+    }
+//    public function getItemCountInCart(array $products): int
+//    {
+//        $count = 0;
+//        foreach ($products as $product) {
+//            $count += $product['quantity'];
+//        }
+//        return $count;
+//    }
 }
