@@ -110,9 +110,12 @@ class ProductController
 
             $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
             if (!empty($userProduct)) {
-                if ($userProduct['quantity'] !== 0){
+                if ($userProduct['quantity'] === 1) {
+                    $this->userProductModel->remove($userId, $productId, $quantity);
+                } elseif ($userProduct['quantity'] !== 0){
                     $this->userProductModel->updateQuantityMinus($userId, $productId, $quantity);
                 }
+
             }
         }
 
