@@ -28,18 +28,27 @@ class MainController
     private function addQuantityToProducts(array $products, array $userProducts): array
     {
         $updatedProducts = [];
-        foreach ($products as $product) {
-            foreach ($userProducts as $userProduct) {
-                if ($product['id'] === $userProduct['product_id']) {
-                    $product['quantity'] = $userProduct['quantity'];
-                    break;
-                }
-                else {
-                    $product['quantity'] = 0;
-                }
+        if (empty($userProducts)) {
+            foreach ($products as $product) {
+                $product['quantity'] = 0;
+                $updatedProducts[] = $product;
             }
-            $updatedProducts[] = $product;
         }
+        else {
+            foreach ($products as $product) {
+                foreach ($userProducts as $userProduct) {
+                    if ($product['id'] === $userProduct['product_id']) {
+                        $product['quantity'] = $userProduct['quantity'];
+                        break;
+                    }
+                    else {
+                        $product['quantity'] = 0;
+                    }
+                }
+                $updatedProducts[] = $product;
+            }
+        }
+
 
         return $updatedProducts;
     }

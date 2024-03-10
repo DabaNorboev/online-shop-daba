@@ -1,11 +1,9 @@
 <?php
 class ProductController
 {
-    private Product $productModel;
     private UserProduct $userProductModel;
     public function __construct()
     {
-        $this->productModel = new Product();
         $this->userProductModel = new UserProduct();
     }
 
@@ -39,13 +37,7 @@ class ProductController
             }
         }
 
-        $products = $this->productModel->getAll();
-        $userProducts = $this->userProductModel->getAllByUserId($userId);
-        $updatedProducts = $this->addQuantityToProducts($products,$userProducts);
-
-        $cartCount = $this->getCartCount($userProducts);
-
-        require_once './../View/main.php';
+        header("Location: /main");
 
     }
     private function validateAddOrRemoveProduct(array $productData): array
@@ -68,32 +60,6 @@ class ProductController
         }
 
         return $errors;
-    }
-    private function addQuantityToProducts(array $products, array $userProducts): array
-    {
-        $updatedProducts = [];
-        foreach ($products as $product) {
-            foreach ($userProducts as $userProduct) {
-                if ($product['id'] === $userProduct['product_id']) {
-                    $product['quantity'] = $userProduct['quantity'];
-                    break;
-                }
-                else {
-                    $product['quantity'] = 0;
-                }
-            }
-            $updatedProducts[] = $product;
-        }
-
-        return $updatedProducts;
-    }
-    private function getCartCount(array $products): int
-    {
-        $count = 0;
-        foreach ($products as $product) {
-            $count += $product['quantity'];
-        }
-        return $count;
     }
     public function removeProduct(): void
     {
@@ -118,13 +84,6 @@ class ProductController
 
             }
         }
-
-        $products = $this->productModel->getAll();
-        $userProducts = $this->userProductModel->getAllByUserId($userId);
-        $updatedProducts = $this->addQuantityToProducts($products,$userProducts);
-
-        $cartCount = $this->getCartCount($userProducts);
-
-        require_once './../View/main.php';
+        header("Location: /main");
     }
 }
