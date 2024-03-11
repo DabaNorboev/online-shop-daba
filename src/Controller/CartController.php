@@ -41,10 +41,11 @@ class CartController
         $errors = [];
 
         //допустим, что каждый товар имеется в количетсве 20 шт
-        if ($userProduct['quantity'] === 20){
-            $errors['quantity'] = 'Товар закончился';
+        if (!empty($userProduct)){
+            if ($userProduct['quantity'] === 20){
+                $errors['quantity'] = 'Товар закончился';
+            }
         }
-
         return $errors;
     }
 
