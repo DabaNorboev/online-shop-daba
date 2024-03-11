@@ -18,7 +18,7 @@
 
 <ul class="catalog">
 
-    <?php foreach ($updatedProducts as $product): ?>
+    <?php foreach ($productsWithQuantity as $product): ?>
 
         <li class="catalog-item">
             <h3><?php echo $product['name'] ?></h3>
@@ -37,14 +37,13 @@
                 <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product['id'] ?>">
                 <input type="hidden" name="quantity" id="quantity" required value = 1>
                 <button type="submit" class="registerbtn">-</button>
+                <p style="color: black"><?php echo $errors['quantity'] ?? '';?></p>
             </form>
 
         </li>
     <?php endforeach; ?>
 
 </ul>
-
-<p style="color: black"><?php echo $errors['quantity'] ?? '';?></p>
 <p style="color: black"><?php if (isset($quantity)) { echo "Товар успешно добавлен в количестве $quantity шт";}?></p>
 </body>
 

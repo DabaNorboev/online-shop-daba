@@ -19,7 +19,7 @@ class MainController
 
         $products = $this->productModel->getAll();
         $userProducts = $this->userProductModel->getAllByUserId($userId);
-        $updatedProducts = $this->addQuantityToProducts($products,$userProducts);
+        $productsWithQuantity = $this->addQuantityToProducts($products,$userProducts);
 
         $cartCount = $this->getCartCount($userProducts);
 
@@ -27,11 +27,11 @@ class MainController
     }
     private function addQuantityToProducts(array $products, array $userProducts): array
     {
-        $updatedProducts = [];
+        $productsWithQuantity = [];
         if (empty($userProducts)) {
             foreach ($products as $product) {
                 $product['quantity'] = 0;
-                $updatedProducts[] = $product;
+                $productsWithQuantity[] = $product;
             }
         }
         else {
@@ -45,12 +45,12 @@ class MainController
                         $product['quantity'] = 0;
                     }
                 }
-                $updatedProducts[] = $product;
+                $productsWithQuantity[] = $product;
             }
         }
 
 
-        return $updatedProducts;
+        return $productsWithQuantity;
     }
     private function getCartCount(array $products): int
     {
