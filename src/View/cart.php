@@ -10,7 +10,7 @@
 
 <body>
 <h2>Корзина</h2>
-<form action = "/logout" method = "post">
+<form action = "/logout" method = "get">
     <button type = "submit">LOGOUT</button>
 </form>
 <a href="/main" class="button-cart">Каталог</a>

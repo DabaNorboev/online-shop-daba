@@ -11,7 +11,7 @@
 <body>
 <h2>Каталог товаров</h2>
 
-    <form action = "/logout" method = "post">
+    <form action = "/logout" method = "get">
         <button type = "submit">LOGOUT</button>
     </form>
 <a href="/cart" class="button-cart">Корзина (<?php echo $cartCount; ?>)</a>

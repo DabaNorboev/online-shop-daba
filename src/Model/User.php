@@ -1,4 +1,7 @@
 <?php
+
+namespace Model;
+
 class User extends Model
 {
     public function getUserByEmail(string $email) :array

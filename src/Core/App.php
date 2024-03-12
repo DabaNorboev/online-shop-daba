@@ -1,65 +1,85 @@
 <?php
+
+namespace Core;
+
+use Controller\CartController;
+use Controller\MainController;
+use Controller\UserController;
+
 class App
 {
-    public function run(): void
+    private array $routes = [
+        '/registrate' => [
+            'GET' => [
+                'class' => UserController::class,
+                'method' => 'getRegistrate',
+            ],
+            'POST' => [
+                'class' => UserController::class,
+                'method' => 'postRegistrate',
+            ],
+        ],
+        '/login' => [
+            'GET' => [
+                'class' => UserController::class,
+                'method' => 'getLogin',
+            ],
+            'POST' => [
+                'class' => UserController::class,
+                'method' => 'postLogin',
+            ]
+        ],
+        '/main' => [
+            'GET' => [
+                'class' => MainController::class,
+                'method' => 'getMain',
+            ]
+        ],
+        '/logout' => [
+            'GET' => [
+                'class' => UserController::class,
+                'method' => 'logout'
+            ]
+        ],
+        '/add-product' => [
+            'POST' => [
+                'class' => CartController::class,
+                'method' => 'addProduct',
+            ]
+        ],
+        '/rm-product' => [
+            'POST' => [
+                'class' => CartController::class,
+                'method' => 'removeProduct',
+            ]
+        ],
+        '/cart' => [
+            'GET' => [
+                'class' => CartController::class,
+                'method' => 'getCart',
+            ]
+        ]
+    ];
+    public function run()
     {
         $uri = $_SERVER['REQUEST_URI'];
-        $method = $_SERVER['REQUEST_METHOD'];
-        if ($uri === '/registrate') {
-            $obj = new UserController();
-            if ($method === 'GET') {
-                $obj->getRegistrate();
-            } elseif ($method === 'POST') {
-                $obj->postRegistrate();
+
+        if (isset($this->routes[$uri])) {
+            $method = $_SERVER['REQUEST_METHOD'];
+            $routeMethod = $this->routes[$uri];
+
+            if (isset($routeMethod[$method])) {
+                $handler = $routeMethod[$method];
+
+                $class = $handler['class'];
+                $method = $handler['method'];
+
+                $obj = new $class;
+                $obj->$method($_POST);
             } else {
-                echo "$method не поддерживается для адреса $uri";
+                echo "$method не поддерживается для $uri";
             }
-        } elseif ($uri === '/login') {
-            $obj = new UserController();
-            if ($method === 'GET') {
-                $obj->getLogin();
-            } elseif ($method === 'POST') {
-                $obj->postLogin();
-            } else {
-                echo "$method не поддерживается для адреса $uri";
-            }
-        } elseif ($uri === '/main') {
-            if ($method === 'GET') {
-                $obj = new MainController();
-                $obj->getMain();
-            } else {
-                echo "$method не поддерживается для адреса $uri";
-            }
-        } elseif ($uri === '/add-product') {
-            $obj = new CartController();
-            if ($method === "POST"){
-                $obj->addProduct();
-            } else {
-                echo "$method не поддерживается для адреса $uri";
-            }
-        } elseif ($uri === '/rm-product') {
-            $obj = new CartController();
-            if ($method === "POST"){
-                $obj->removeProduct();
-            } else {
-                echo "$method не поддерживается для адреса $uri";
-            }
-        } elseif ($uri === '/cart') {
-            $obj = new CartController();
-            if ($method === 'GET') {
-                $obj->getCart();
-            } else {
-                echo "$method не поддерживается для адреса $uri";
-            }
-        } elseif ($uri === '/logout') {
-            $obj = new UserController();
-            if ($method === 'POST') {
-                $obj->logout();
-            } else {
-                echo "$method не поддерживается для адреса $uri";
-            }
-        }
-        else {
+        } else {
             require_once './../View/404.html';
         }
     }

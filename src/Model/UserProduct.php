@@ -1,4 +1,7 @@
 <?php
+
+namespace Model;
+
 class UserProduct extends Model
 {
     public function add(string $userId, string $productId, string $quantity): void
