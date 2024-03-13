@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/App.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Autoloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Autoloader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UserProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +126,8 @@
       <workItem from="1709994057576" duration="13576000" />
       <workItem from="1710157573955" duration="4865000" />
       <workItem from="1710173102947" duration="2983000" />
-      <workItem from="1710244289821" duration="683000" />
+      <workItem from="1710244289821" duration="2801000" />
+      <workItem from="1710314992084" duration="3636000" />
     </task>
     <servers />
   </component>

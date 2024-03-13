@@ -14,7 +14,7 @@ class CartController
         $this->productModel = new Product();
         $this->userProductModel = new UserProduct();
     }
-    public function addProduct(): void
+    public function addProduct(array $data): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
@@ -22,14 +22,14 @@ class CartController
         }
 
         $userId = $_SESSION['user_id'];
-        $productId = $_POST['product_id'];
-        $quantity = $_POST['quantity'];
 
-        $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
-
-        $errors = $this->validateAddProduct($userProduct);
+        $errors = $this->validateProduct($data);
 
         if (empty($errors)) {
+            $productId = $data['product_id'];
+            $quantity = 1;
+
+            $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
 
             if (empty($userProduct)) {
                 $this->userProductModel->add($userId, $productId, $quantity);
@@ -40,74 +40,98 @@ class CartController
         }
 
         header("Location: /main");
-
-    }
-    private function validateAddProduct(array $userProduct): array
-    {
-        $errors = [];
-
-        //допустим, что каждый товар имеется в количетсве 20 шт
-        if (!empty($userProduct)){
-            if ($userProduct['quantity'] === 20){
-                $errors['quantity'] = 'Товар закончился';
-            }
-        }
-        return $errors;
     }
 
-    public function removeProduct(): void
+    public function removeProduct(array $productData): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
         $userId = $_SESSION['user_id'];
-        $productId = $_POST['product_id'];
-        $quantity = 1;
 
-        $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
+        $errors = $this->validateProduct($productData);
 
-        $errors = $this->validateRemoveProduct($userProduct);
-        if (empty($errors))
-        if (!empty($userProduct)) {
-            if ($userProduct['quantity'] === 1) {
-                $this->userProductModel->remove($userId, $productId);
-            } elseif ($userProduct['quantity'] !== 0){
-                $this->userProductModel->updateQuantityMinus($userId, $productId, $quantity);
+        if (empty($errors)) {
+            $productId = $productData['product_id'];
+            $quantity = 1;
+
+            $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
+
+            if (!empty($userProduct)) {
+                if ($userProduct['quantity'] === 1) {
+                    $this->userProductModel->remove($userId, $productId);
+                } elseif ($userProduct['quantity'] !== 0){
+                    $this->userProductModel->updateQuantityMinus($userId, $productId, $quantity);
+                }
             }
         }
+
         header("Location: /main");
     }
-    private function validateRemoveProduct(array $userProduct): array
+    private function validateProduct(array $data): array
     {
         $errors = [];
-        if (empty($userProduct)){
-            $errors['quantity'] = 'Товара нет в корзине';
+
+        foreach ($data as $key=>$value)
+        {
+            if (isset($value)){
+                $values[$key] = $value;
+                if (empty($value)) {
+                    $errors[$key] = "Это поле не должно быть пустым";
+                }elseif ($key === 'product_id') {
+                    if (ctype_digit($value)) {
+                        $productModel = new Product();
+                        $productById = $productModel->getOneById($value);
+                        if (empty($productById)) {
+                            $errors[$key] = 'Продукта с таким id не существует';
+                        }
+                    } else {
+                        $errors[$key] = 'Некорректный формат id продукта';
+                    }
+                }elseif ($key === 'quantity') {
+                    if (!ctype_digit($value)) {
+                        $errors[$key] = 'Некорректный формат количества продукта';
+                    }
+                }
+            }else {
+                $errors[$key] = "Это поле не должно быть пустым";
+            }
         }
 
-    return $errors;
+        return $errors;
     }
+
     public function getCart(): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])){
             header("Location: /login");
         }
+
         $userId = $_SESSION['user_id'];
+
         $productsOfCart = $this->getProductsOfCart($userId);
         $totalPrice = $this->getTotalPrice($productsOfCart);
+
         require_once './../View/cart.php';
     }
     public function getProductsOfCart($userId): array
     {
         $products = $this->productModel->getAll();
         $userProducts = $this->userProductModel->getAllByUserId($userId);
+
         $productsOfCart = [];
+
         if (!empty($userProducts)) {
+
             foreach ($userProducts as $userProduct) {
+
                 $productOfCart = [];
+
                 foreach ($products as $product) {
                     if ($product['id'] === $userProduct['product_id']) {
+
                         $productOfCart['name'] = $product['name'];
                         $productOfCart['img_url'] = $product['img_url'];
                         $productOfCart['price'] = $product['price'];
@@ -124,11 +148,14 @@ class CartController
     public function getTotalPrice(array $products): int
     {
         $totalPrice = 0;
+
         if (!empty($products)){
+
             foreach($products as $product){
                 $totalPrice += $product['sum'];
             }
         }
+
         return $totalPrice;
     }
 }

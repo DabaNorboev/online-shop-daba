@@ -34,6 +34,7 @@ class MainController
     private function addQuantityToProducts(array $products, array $userProducts): array
     {
         $productsWithQuantity = [];
+
         if (empty($userProducts)) {
             foreach ($products as $product) {
                 $product['quantity'] = 0;
@@ -43,6 +44,7 @@ class MainController
         else {
             foreach ($products as $product) {
                 foreach ($userProducts as $userProduct) {
+
                     if ($product['id'] === $userProduct['product_id']) {
                         $product['quantity'] = $userProduct['quantity'];
                         break;

@@ -17,18 +17,19 @@ class UserController
         require_once './../View/registrate.php';
     }
 
-    public function postRegistrate(): void
+    public function postRegistrate(array $data): void
     {
-        $errors = $this->validateRegistrate($_POST);
+        $errors = $this->validateRegistrate($data);
 
         if (empty($errors)) {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['psw'];
+            $name = $data['name'];
+            $email = $data['email'];
+            $password = $data['psw'];
 
             $password = password_hash($password,PASSWORD_DEFAULT);
 
             $this->userModel->create($name, $email, $password);
+
             header('Location: login');
         }
 
@@ -81,12 +82,12 @@ class UserController
         require_once './../View/login.php';
     }
 
-    public function postLogin(): void
+    public function postLogin(array $data): void
     {
-        $errors = $this->validateLogin($_POST);
+        $errors = $this->validateLogin($data);
 
         if (empty($errors)) {
-            $email = $_POST["email"];
+            $email = $data["email"];
 
             $user = $this->userModel->getUserByEmail($email);
 
