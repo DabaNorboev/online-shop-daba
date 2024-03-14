@@ -45,4 +45,9 @@ class UserProduct extends Model
         return $stmt->fetchAll();
     }
 
+    public function clearByUserId(string $userId): void
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM user_products WHERE user_id=:user_id");
+        $stmt->execute(['user_id' => $userId]);
+    }
 }

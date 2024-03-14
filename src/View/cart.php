@@ -10,7 +10,7 @@
 
 <body>
 <h2>Корзина</h2>
-<form action = "/logout" method = "get">
+<form action = "/logout" method = "post">
     <button type = "submit">LOGOUT</button>
 </form>
 <a href="/main" class="button-cart">Каталог</a>
@@ -32,7 +32,9 @@
 <p class="price">Итоговая сумма заказа: <?php echo $totalPrice;?> руб</p>
 <p style="color: black"><?php echo $errors['quantity'] ?? ''?></p>
 <p style="color: black"><?php if (empty($productsOfCart)) { echo 'Корзина пуста';}?></p>
-    <button type="submit" class="registerbtn">Купить</button>
+<button onclick="window.location.href='/order'">Перейти к оформлению заказа</button>
+
+
 
 
 
