@@ -101,7 +101,6 @@ class OrderController
 
                 $this->orderModel->create($userId, $name, $phoneNumber, $address, $comment);
 
-
                 $orderId = $this->orderModel->getOrderId();
 
                 foreach ($productsOfCart as $product) {

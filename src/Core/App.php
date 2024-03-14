@@ -70,6 +70,12 @@ class App
                 'class' => OrderController::class,
                 'method' => 'postOrder'
             ]
+        ],
+        '/clear-cart' => [
+            "POST" => [
+                'class' => CartController::class,
+                'method' => 'clearCart'
+            ]
         ]
     ];
     public function run()

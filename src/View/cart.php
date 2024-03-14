@@ -13,6 +13,9 @@
 <form action = "/logout" method = "post">
     <button type = "submit">LOGOUT</button>
 </form>
+<form action = "/clear-cart" method = "post">
+    <button type = "submit">Очистить корзину</button>
+</form>
 <a href="/main" class="button-cart">Каталог</a>
 <ul class="catalog">
 

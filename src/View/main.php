@@ -14,6 +14,9 @@
     <form action = "/logout" method = "get">
         <button type = "submit">LOGOUT</button>
     </form>
+<form action = "/clear-cart" method = "post">
+    <button type = "submit">Очистить корзину</button>
+</form>
 <a href="/cart" class="button-cart">Корзина (<?php echo $cartCount; ?>)</a>
 
 <ul class="catalog">

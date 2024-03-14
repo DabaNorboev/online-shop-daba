@@ -158,4 +158,17 @@ class CartController
 
         return $totalPrice;
     }
+    public function clearCart(): void
+    {
+        session_start();
+        if (!isset($_SESSION['user_id'])){
+            header("Location: /login");
+        }
+
+        $userId = $_SESSION['user_id'];
+
+        $this->userProductModel->clearByUserId($userId);
+
+        header("Location: /main");
+    }
 }
