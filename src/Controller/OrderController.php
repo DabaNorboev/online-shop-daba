@@ -85,37 +85,34 @@ class OrderController
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
-        $errors = $this->validateOrder($data);
+        $userId = $_SESSION['user_id'];
 
-        header("Location: /order");
+        $errors = $this->validateOrder($data,$userId);
+
         if (empty($errors)) {
-            $userId = $_SESSION['user_id'];
+            $name = $data['name'];
+            $phoneNumber = $data['tel'];
+            $address = $data['address'];
+            $comment = $data['comment'];
+
+            $this->orderModel->create($userId, $name, $phoneNumber, $address, $comment);
+
+            $orderId = $this->orderModel->getOrderId();
 
             $productsOfCart = $this->getProductsOfCart($userId);
 
-            if (!empty($productsOfCart)) {
-                $name = $data['name'];
-                $phoneNumber = $data['tel'];
-                $address = $data['address'];
-                $comment = $data['comment'];
-
-                $this->orderModel->create($userId, $name, $phoneNumber, $address, $comment);
-
-                $orderId = $this->orderModel->getOrderId();
-
-                foreach ($productsOfCart as $product) {
-                    $productId = $product['id'];
-                    $quantity = $product['quantity'];
-                    $this->orderProductModel->add($orderId,$productId,$quantity);
-                }
-
-                $this->userProductModel->clearByUserId($userId);
-            } else {
-                header("Location: /main");
+            foreach ($productsOfCart as $product) {
+                $productId = $product['id'];
+                $quantity = $product['quantity'];
+                $this->orderProductModel->add($orderId,$productId,$quantity);
             }
+
+            $this->userProductModel->clearByUserId($userId);
         }
+
+        header("Location: /order");
     }
-    private function validateOrder(array $orderData): array
+    private function validateOrder(array $orderData, string $userId): array
     {
         $errors = [];
 
@@ -147,6 +144,13 @@ class OrderController
                 $errors[$key] = "Это поле не должно быть пустым";
             }
         }
+
+        $productsOfCart = $this->getProductsOfCart($userId);
+
+        if (empty($productsOfCart)){
+            $errors['products-of-cart'] = 'Нельзя оформить заказ, т.к ваша корзина пуста';
+        }
+
         return $errors;
     }
 }

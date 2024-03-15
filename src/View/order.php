@@ -9,14 +9,17 @@
                 <h3 class="topborder"><span>Адресс доставки</span></h3>
                 <div class="width50 padright">
                     <label for="name">Имя</label>
+                    <label style="color: red"><?php echo $errors['name'] ?? '';?></label>
                     <input type="text" name="name" id="name" placeholder="Введите имя" required>
                 </div>
                 <div class="width50">
                     <label for="tel">Номер телефона</label>
                     <small>Образец: 88005002010</small>
+                    <label style="color: red"><?php echo $errors['tel'] ?? '';?></label>
                     <input type="text" name="tel" id="tel" placeholder="Введите номер телефона" required>
                 </div>
                 <label for="address">Адрес</label>
+                <label style="color: red"><?php echo $errors['address'] ?? '';?></label>
                 <input type="text" name="address" id="address" placeholder="Введите адрес" required>
                 <label for="comment" class="notes">Комментарий к заказу</label>
                 <textarea name="comment" id="comment"></textarea>
@@ -34,6 +37,7 @@
                 </div>
                 <?php endforeach; ?>
                 <div><h5>Сумма заказа</h5><span class="smalltxt"></span> <?php echo $totalPrice; ?></div>
+                <label style="color: red"><?php echo $errors['products-of-cart'] ?? '';?></label>
 
                 <input type="submit" name="submit" value="Оформить заказ" class="redbutton">
             </div>
