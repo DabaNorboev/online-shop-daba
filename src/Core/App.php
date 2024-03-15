@@ -76,6 +76,12 @@ class App
                 'class' => CartController::class,
                 'method' => 'clearCart'
             ]
+        ],
+        '/clear-product' => [
+            "POST" => [
+                'class' => CartController::class,
+                'method' => 'clearProduct'
+            ]
         ]
     ];
     public function run()

@@ -27,8 +27,8 @@ class UserProduct extends Model
     }
     public function getOneByUserIdProductId($userId, $productId): array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM user_products WHERE user_id = :userId AND product_id = :productId");
-        $stmt->execute(['userId' => $userId, 'productId' => $productId]);
+        $stmt = $this->pdo->prepare("SELECT * FROM user_products WHERE user_id = :user_id AND product_id = :product_id");
+        $stmt->execute(['user_id' => $userId, 'product_id' => $productId]);
         $userProduct = $stmt->fetch();
 
         if (empty($userProduct)) {
@@ -49,5 +49,10 @@ class UserProduct extends Model
     {
         $stmt = $this->pdo->prepare("DELETE FROM user_products WHERE user_id=:user_id");
         $stmt->execute(['user_id' => $userId]);
+    }
+    public function clearProductByUserIdProductId(string $userId, string $productId): void
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM user_products WHERE user_id=:user_id AND product_id = :product_id");
+        $stmt->execute(['user_id' => $userId, 'product_id' => $productId]);
     }
 }

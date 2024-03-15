@@ -42,7 +42,7 @@ class CartController
         header("Location: /main");
     }
 
-    public function removeProduct(array $productData): void
+    public function removeProduct(array $data): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
@@ -50,10 +50,10 @@ class CartController
         }
         $userId = $_SESSION['user_id'];
 
-        $errors = $this->validateProduct($productData);
+        $errors = $this->validateProduct($data);
 
         if (empty($errors)) {
-            $productId = $productData['product_id'];
+            $productId = $data['product_id'];
             $quantity = 1;
 
             $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
@@ -132,6 +132,7 @@ class CartController
                 foreach ($products as $product) {
                     if ($product['id'] === $userProduct['product_id']) {
 
+                        $productOfCart['id'] = $product['id'];
                         $productOfCart['name'] = $product['name'];
                         $productOfCart['img_url'] = $product['img_url'];
                         $productOfCart['price'] = $product['price'];
@@ -170,5 +171,23 @@ class CartController
         $this->userProductModel->clearByUserId($userId);
 
         header("Location: /main");
+    }
+    public function clearProduct(array $data): void
+    {
+        session_start();
+        if (!isset($_SESSION['user_id'])){
+            header("Location: /login");
+        }
+        $userId = $_SESSION['user_id'];
+
+        $errors = $this->validateProduct($data);
+
+        if (empty($errors)){
+            $productId = $data['product_id'];
+
+            $this->userProductModel->clearProductByUserIdProductId($userId,$productId);
+        }
+
+        header("Location: /cart");
     }
 }

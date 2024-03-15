@@ -26,6 +26,11 @@
 <!--                <p class="price">Цена за шт: --><?php //echo $product['price'] ?><!-- руб</p>-->
                 <p class="price">Количество: <?php echo $product['quantity'] ?> шт</p>
                 <p class="price">Цена: <?php echo $product['sum'] ?> руб</p>
+                <form action = "/clear-product" method="post">
+                    <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product['id'] ?>">
+                    <button type="submit" class="registerbtn">Удалить продукт</button>
+                    <p style="color: black"><?php echo $errors['quantity'] ?? '';?></p>
+                </form>
             </li>
 
     <?php endforeach; ?>
