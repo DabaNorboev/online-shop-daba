@@ -29,42 +29,13 @@ class OrderController
         }
         $userId = $_SESSION['user_id'];
 
-        $productsOfCart = $this->getProductsOfCart($userId);
+        $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
+
         $totalPrice = $this->getTotalPrice($productsOfCart);
 
         require_once './../View/order.php';
     }
 
-    public function getProductsOfCart($userId): array
-    {
-        $products = $this->productModel->getAll();
-        $userProducts = $this->userProductModel->getAllByUserId($userId);
-
-        $productsOfCart = [];
-
-        if (!empty($userProducts)) {
-
-            foreach ($userProducts as $userProduct) {
-
-                $productOfCart = [];
-
-                foreach ($products as $product) {
-                    if ($product['id'] === $userProduct['product_id']) {
-
-                        $productOfCart['id'] = $product['id'];
-                        $productOfCart['name'] = $product['name'];
-                        $productOfCart['img_url'] = $product['img_url'];
-                        $productOfCart['price'] = $product['price'];
-                        $productOfCart['quantity'] = $userProduct['quantity'];
-                        $productOfCart['sum'] = $productOfCart['quantity'] * $productOfCart['price'];
-                    }
-                }
-                $productsOfCart[] = $productOfCart;
-            }
-        }
-
-        return $productsOfCart;
-    }
     public function getTotalPrice(array $products): int
     {
         $totalPrice = 0;
@@ -72,7 +43,7 @@ class OrderController
         if (!empty($products)){
 
             foreach($products as $product){
-                $totalPrice += $product['sum'];
+                $totalPrice += $product->getSum();
             }
         }
 
@@ -99,11 +70,11 @@ class OrderController
 
             $orderId = $this->orderModel->getOrderId();
 
-            $productsOfCart = $this->getProductsOfCart($userId);
+            $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
 
             foreach ($productsOfCart as $product) {
-                $productId = $product['id'];
-                $quantity = $product['quantity'];
+                $productId = $product->getId();
+                $quantity = $product->getQuantity();
                 $this->orderProductModel->add($orderId,$productId,$quantity);
             }
 
@@ -145,7 +116,7 @@ class OrderController
             }
         }
 
-        $productsOfCart = $this->getProductsOfCart($userId);
+        $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
 
         if (empty($productsOfCart)){
             $errors['products-of-cart'] = 'Нельзя оформить заказ, т.к ваша корзина пуста';

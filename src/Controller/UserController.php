@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Entity\UserEntity;
 use Model\User;
 
 class UserController
@@ -95,7 +96,7 @@ class UserController
                 $errors['email'] = 'неправильный email или пароль';
             } else {
                 session_start();
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_id'] = $user->getId();
                 header('Location: main');
             }
         }
@@ -127,7 +128,7 @@ class UserController
 
                 if (empty($user)) {
                     $errors['email'] = 'неправильный email или пароль';
-                } elseif (!password_verify($password, $user['password'])) {
+                } elseif (!password_verify($password, $user->getPassword())) {
                     $errors['psw'] = 'неправильный email или пароль';
                 }
             } else {

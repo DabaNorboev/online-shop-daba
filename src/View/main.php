@@ -24,20 +24,20 @@
     <?php foreach ($productsWithQuantity as $product): ?>
 
         <li class="catalog-item">
-            <h3><?php echo $product['name'] ?></h3>
-            <img src="<?php echo $product['img_url'] ?>" alt="Изображение товара">
-            <p class="price"><?php echo $product['price'] ?> руб</p>
-            <p><?php echo $product['description'] ?></p>
+            <h3><?php echo $product->getName(); ?></h3>
+            <img src="<?php echo $product->getImgUrl(); ?>" alt="Изображение товара">
+            <p class="price"><?php echo $product->getPrice(); ?> руб</p>
+            <p><?php echo $product->getDescription(); ?></p>
 
-            <p class="price"><?php echo $product['quantity'] ?></p>
+            <p class="price"><?php echo $product->getQuantity(); ?></p>
             <form action = "/add-product" method = "post">
-                <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product['id'] ?>">
+                <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product->getId(); ?>">
                 <input type="hidden" name="quantity" id="quantity" required value = 1>
                 <button type="submit" class="registerbtn">+</button>
             </form>
 
             <form action = "/rm-product" method="post">
-                <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product['id'] ?>">
+                <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product->getId(); ?>">
                 <input type="hidden" name="quantity" id="quantity" required value = 1>
                 <button type="submit" class="registerbtn">-</button>
                 <p style="color: black"><?php echo $errors['quantity'] ?? '';?></p>

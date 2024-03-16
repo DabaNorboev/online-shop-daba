@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/CartProduct.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/ProductEntity.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/UserEntity.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/UserProductEntity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fda149c1-558b-4589-949a-87b8eae88145.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fda149c1-558b-4589-949a-87b8eae88145.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserProduct.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,29 +57,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.test.php.executor&quot;: &quot;Run&quot;,
-    &quot;PHP Script.post_registrate.php.executor&quot;: &quot;Run&quot;,
-    &quot;PHP Script.test.php.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/daba/Рабочий стол/projects/online-shop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.php.debug.servers&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.test.php.executor": "Run",
+    "PHP Script.post_registrate.php.executor": "Run",
+    "PHP Script.test.php.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/daba/Рабочий стол/стас пидор",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "copyright",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -126,7 +134,8 @@
       <workItem from="1710157573955" duration="4865000" />
       <workItem from="1710173102947" duration="2983000" />
       <workItem from="1710244289821" duration="2801000" />
-      <workItem from="1710314992084" duration="29272000" />
+      <workItem from="1710314992084" duration="32346000" />
+      <workItem from="1710575404194" duration="3626000" />
     </task>
     <servers />
   </component>

@@ -37,7 +37,7 @@ class MainController
 
         if (empty($userProducts)) {
             foreach ($products as $product) {
-                $product['quantity'] = 0;
+                $product->setQuantity(0);
                 $productsWithQuantity[] = $product;
             }
         }
@@ -45,18 +45,17 @@ class MainController
             foreach ($products as $product) {
                 foreach ($userProducts as $userProduct) {
 
-                    if ($product['id'] === $userProduct['product_id']) {
-                        $product['quantity'] = $userProduct['quantity'];
+                    if ($product->getId() === $userProduct->getProductId()) {
+                        $product->setQuantity($userProduct->getQuantity());
                         break;
                     }
                     else {
-                        $product['quantity'] = 0;
+                        $product->setQuantity(0);
                     }
                 }
                 $productsWithQuantity[] = $product;
             }
         }
-
 
         return $productsWithQuantity;
     }
@@ -64,7 +63,7 @@ class MainController
     {
         $count = 0;
         foreach ($products as $product) {
-            $count += $product['quantity'];
+            $count += $product->getQuantity();
         }
         return $count;
     }

@@ -59,9 +59,9 @@ class CartController
             $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
 
             if (!empty($userProduct)) {
-                if ($userProduct['quantity'] === 1) {
+                if ($userProduct->getQuantity() === 1) {
                     $this->userProductModel->remove($userId, $productId);
-                } elseif ($userProduct['quantity'] !== 0){
+                } elseif ($userProduct->getQuantity() !== 0){
                     $this->userProductModel->updateQuantityMinus($userId, $productId, $quantity);
                 }
             }
@@ -81,8 +81,7 @@ class CartController
                     $errors[$key] = "Это поле не должно быть пустым";
                 }elseif ($key === 'product_id') {
                     if (ctype_digit($value)) {
-                        $productModel = new Product();
-                        $productById = $productModel->getOneById($value);
+                        $productById = $this->productModel->getOneById($value);
                         if (empty($productById)) {
                             $errors[$key] = 'Продукта с таким id не существует';
                         }
@@ -111,40 +110,11 @@ class CartController
 
         $userId = $_SESSION['user_id'];
 
-        $productsOfCart = $this->getProductsOfCart($userId);
+        $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
+
         $totalPrice = $this->getTotalPrice($productsOfCart);
 
         require_once './../View/cart.php';
-    }
-    public function getProductsOfCart($userId): array
-    {
-        $products = $this->productModel->getAll();
-        $userProducts = $this->userProductModel->getAllByUserId($userId);
-
-        $productsOfCart = [];
-
-        if (!empty($userProducts)) {
-
-            foreach ($userProducts as $userProduct) {
-
-                $productOfCart = [];
-
-                foreach ($products as $product) {
-                    if ($product['id'] === $userProduct['product_id']) {
-
-                        $productOfCart['id'] = $product['id'];
-                        $productOfCart['name'] = $product['name'];
-                        $productOfCart['img_url'] = $product['img_url'];
-                        $productOfCart['price'] = $product['price'];
-                        $productOfCart['quantity'] = $userProduct['quantity'];
-                        $productOfCart['sum'] = $productOfCart['quantity'] * $productOfCart['price'];
-                    }
-                }
-                $productsOfCart[] = $productOfCart;
-            }
-        }
-
-        return $productsOfCart;
     }
     public function getTotalPrice(array $products): int
     {
@@ -153,7 +123,7 @@ class CartController
         if (!empty($products)){
 
             foreach($products as $product){
-                $totalPrice += $product['sum'];
+                $totalPrice += $product->getSum();
             }
         }
 

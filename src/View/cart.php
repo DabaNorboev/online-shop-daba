@@ -21,13 +21,13 @@
 
     <?php foreach ($productsOfCart as $product): ?>
             <li class="catalog-item">
-                <h3><?php echo $product['name'] ?></h3>
-                <img src="<?php echo $product['img_url'] ?>" alt="Изображение товара">
+                <h3><?php echo $product->getName(); ?></h3>
+                <img src="<?php echo $product->getImgUrl(); ?>" alt="Изображение товара">
 <!--                <p class="price">Цена за шт: --><?php //echo $product['price'] ?><!-- руб</p>-->
-                <p class="price">Количество: <?php echo $product['quantity'] ?> шт</p>
-                <p class="price">Цена: <?php echo $product['sum'] ?> руб</p>
+                <p class="price">Количество: <?php echo $product->getQuantity(); ?> шт</p>
+                <p class="price">Цена: <?php echo $product->getSum(); ?> руб</p>
                 <form action = "/clear-product" method="post">
-                    <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product['id'] ?>">
+                    <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product->getId(); ?>">
                     <button type="submit" class="registerbtn">Удалить продукт</button>
                     <p style="color: black"><?php echo $errors['quantity'] ?? '';?></p>
                 </form>
