@@ -2,7 +2,7 @@
 
 namespace Entity;
 
-class UserEntity
+class User
 {
     private string $id;
     private string $name;

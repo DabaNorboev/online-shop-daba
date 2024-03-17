@@ -21,7 +21,7 @@
 
 <ul class="catalog">
 
-    <?php foreach ($productsWithQuantity as $product): ?>
+    <?php foreach ($products as $product): ?>
 
         <li class="catalog-item">
             <h3><?php echo $product->getName(); ?></h3>

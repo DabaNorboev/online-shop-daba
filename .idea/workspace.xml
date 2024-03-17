@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Request/LoginRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Request/MainRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Request/RegistrationRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Request/Request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CartProductEntity.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ProductEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/UserEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/UserProductEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/Repository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/OrderProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrderProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/order.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <execution>
+      <executable path="composer" />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="PhpDebugGeneral" break_at_first_line="true" />
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="fc9837dd-61f6-46ed-85d5-dbdbb95c9bdf" name="Unnamed" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html" />
+          <mapping local-root="$PROJECT_DIR$/src" remote-root="var/www/html/src" />
+          <mapping local-root="$PROJECT_DIR$/src/public" remote-root="var/www/html/src/public" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2cdBOEVZKc6CldxqRfdCpFQ3Yh7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.test.php.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.post_registrate.php.executor&quot;: &quot;Run&quot;,
+    &quot;PHP Script.test.php.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daba/Рабочий стол/стас пидор&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;copyright&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/View" />
+      <recent name="$PROJECT_DIR$/.docker/conf/nginx" />
+      <recent name="$PROJECT_DIR$/.docker/conf" />
+      <recent name="$PROJECT_DIR$/.docker" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.14808.18" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="" />
+      <created>1708431540505</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708431540505</updated>
+      <workItem from="1708431541546" duration="2653000" />
+      <workItem from="1708514580624" duration="1308000" />
+      <workItem from="1708515949585" duration="952000" />
+      <workItem from="1708522092025" duration="11000" />
+      <workItem from="1708522377113" duration="3104000" />
+      <workItem from="1708574409287" duration="9587000" />
+      <workItem from="1708584093390" duration="6000" />
+      <workItem from="1708603505817" duration="894000" />
+      <workItem from="1708745491416" duration="3133000" />
+      <workItem from="1708855782450" duration="10061000" />
+      <workItem from="1708963266907" duration="21040000" />
+      <workItem from="1709026170384" duration="18386000" />
+      <workItem from="1709058792994" duration="359000" />
+      <workItem from="1709059170901" duration="188000" />
+      <workItem from="1709187947874" duration="705000" />
+      <workItem from="1709188658753" duration="8068000" />
+      <workItem from="1709204045221" duration="7725000" />
+      <workItem from="1709356314072" duration="14215000" />
+      <workItem from="1709460330563" duration="1384000" />
+      <workItem from="1709547591484" duration="16008000" />
+      <workItem from="1709641868577" duration="7422000" />
+      <workItem from="1709725876878" duration="1069000" />
+      <workItem from="1709728019001" duration="13966000" />
+      <workItem from="1709812341882" duration="9151000" />
+      <workItem from="1709994057576" duration="13576000" />
+      <workItem from="1710157573955" duration="4865000" />
+      <workItem from="1710173102947" duration="2983000" />
+      <workItem from="1710244289821" duration="2801000" />
+      <workItem from="1710314992084" duration="32346000" />
+      <workItem from="1710575404194" duration="11375000" />
+      <workItem from="1710680051627" duration="12249000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

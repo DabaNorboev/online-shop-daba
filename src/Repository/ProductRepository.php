@@ -1,9 +1,9 @@
 <?php
 
-namespace Model;
+namespace Repository;
 
-use Entity\ProductEntity;
-class Product extends Model
+use Entity\Product;
+class ProductRepository extends Repository
 {
     public function getAll(): array
     {
@@ -16,11 +16,11 @@ class Product extends Model
         }
         $productsArray = [];
         foreach ($products as $product){
-            $productsArray[] = new ProductEntity($product['id'],$product['name'],$product['description'],$product['price'],$product['img_url']);
+            $productsArray[] = new Product($product['id'],$product['name'],$product['description'],$product['price'],$product['img_url']);
         }
         return $productsArray;
     }
-    public function getOneById($id): ProductEntity | null
+    public function getOneById($id): Product | null
     {
         $stmt = $this->pdo->prepare("SELECT * FROM products WHERE id=:id");
         $stmt->execute(['id' => $id]);
@@ -28,6 +28,6 @@ class Product extends Model
         if (empty($product)) {
             return null;
         }
-        return new ProductEntity($product['id'],$product['name'],$product['description'],$product['price'],$product['img_url']);
+        return new Product($product['id'],$product['name'],$product['description'],$product['price'],$product['img_url']);
     }
 }

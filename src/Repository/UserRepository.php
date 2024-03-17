@@ -1,12 +1,12 @@
 <?php
 
-namespace Model;
+namespace Repository;
 
-use Entity\UserEntity;
+use Entity\User;
 
-class User extends Model
+class UserRepository extends Repository
 {
-    public function getUserByEmail(string $email): UserEntity | null
+    public function getUserByEmail(string $email): User | null
     {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
@@ -16,7 +16,7 @@ class User extends Model
         if (empty($user)) {
             return null;
         }
-         return new UserEntity($user['id'],$user['name'],$user['email'],$user['password']);
+         return new User($user['id'],$user['name'],$user['email'],$user['password']);
     }
      public function create(string $name, string $email, string $password): void
      {

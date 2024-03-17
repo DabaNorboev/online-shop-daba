@@ -33,7 +33,7 @@
                 </div>
                 <?php foreach ($productsOfCart as $product): ?>
                 <div>
-                    <p class="prod-description inline"><?php echo $product->getName(); ?><div class="qty inline"><span class="smalltxt">x</span> <?php echo $product->getQuantity(); ?></div><div class="qty inline"><span class="smalltxt right-div"><?php echo $product->getSum(); ?></span> </div></p>
+                    <p class="prod-description inline"><?php echo $product->getProduct()->getName(); ?><div class="qty inline"><span class="smalltxt">x</span> <?php echo $product->getQuantity(); ?></div><div class="qty inline"><span class="smalltxt right-div"><?php echo $product->getProduct()->getPrice()*$product->getQuantity(); ?></span> </div></p>
                 </div>
                 <?php endforeach; ?>
                 <div><h5>Сумма заказа</h5><span class="smalltxt"></span> <?php echo $totalPrice; ?></div>

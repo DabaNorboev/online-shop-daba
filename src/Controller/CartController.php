@@ -2,17 +2,17 @@
 
 namespace Controller;
 
-use Model\Product;
-use Model\UserProduct;
+use Repository\ProductRepository;
+use Repository\UserProductRepository;
 
 class CartController
 {
-    private Product $productModel;
-    private UserProduct $userProductModel;
+    private ProductRepository $productRepository;
+    private UserProductRepository $userProductRepository;
     public function __construct()
     {
-        $this->productModel = new Product();
-        $this->userProductModel = new UserProduct();
+        $this->productRepository = new ProductRepository();
+        $this->userProductRepository = new UserProductRepository();
     }
     public function addProduct(array $data): void
     {
@@ -29,13 +29,13 @@ class CartController
             $productId = $data['product_id'];
             $quantity = 1;
 
-            $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
+            $userProduct = $this->userProductRepository->getOneByUserIdProductId($userId,$productId);
 
             if (empty($userProduct)) {
-                $this->userProductModel->add($userId, $productId, $quantity);
+                $this->userProductRepository->add($userId, $productId, $quantity);
             }
             else {
-                $this->userProductModel->updateQuantityPlus($userId, $productId, $quantity);
+                $this->userProductRepository->updateQuantityPlus($userId, $productId, $quantity);
             }
         }
 
@@ -56,13 +56,13 @@ class CartController
             $productId = $data['product_id'];
             $quantity = 1;
 
-            $userProduct = $this->userProductModel->getOneByUserIdProductId($userId,$productId);
+            $userProduct = $this->userProductRepository->getOneByUserIdProductId($userId,$productId);
 
             if (!empty($userProduct)) {
                 if ($userProduct->getQuantity() === 1) {
-                    $this->userProductModel->remove($userId, $productId);
+                    $this->userProductRepository->remove($userId, $productId);
                 } elseif ($userProduct->getQuantity() !== 0){
-                    $this->userProductModel->updateQuantityMinus($userId, $productId, $quantity);
+                    $this->userProductRepository->updateQuantityMinus($userId, $productId, $quantity);
                 }
             }
         }
@@ -81,7 +81,7 @@ class CartController
                     $errors[$key] = "Это поле не должно быть пустым";
                 }elseif ($key === 'product_id') {
                     if (ctype_digit($value)) {
-                        $productById = $this->productModel->getOneById($value);
+                        $productById = $this->productRepository->getOneById($value);
                         if (empty($productById)) {
                             $errors[$key] = 'Продукта с таким id не существует';
                         }
@@ -110,7 +110,7 @@ class CartController
 
         $userId = $_SESSION['user_id'];
 
-        $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
+        $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
 
         $totalPrice = $this->getTotalPrice($productsOfCart);
 
@@ -121,9 +121,8 @@ class CartController
         $totalPrice = 0;
 
         if (!empty($products)){
-
             foreach($products as $product){
-                $totalPrice += $product->getSum();
+                $totalPrice += $product->getProduct()->getPrice()*$product->getQuantity();
             }
         }
 
@@ -138,7 +137,7 @@ class CartController
 
         $userId = $_SESSION['user_id'];
 
-        $this->userProductModel->clearByUserId($userId);
+        $this->userProductRepository->clearByUserId($userId);
 
         header("Location: /main");
     }
@@ -155,7 +154,7 @@ class CartController
         if (empty($errors)){
             $productId = $data['product_id'];
 
-            $this->userProductModel->clearProductByUserIdProductId($userId,$productId);
+            $this->userProductRepository->clearProductByUserIdProductId($userId,$productId);
         }
 
         header("Location: /cart");

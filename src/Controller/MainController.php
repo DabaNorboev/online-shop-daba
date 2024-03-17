@@ -2,18 +2,18 @@
 
 namespace Controller;
 
-use Model\Product;
-use Model\UserProduct;
+use Repository\ProductRepository;
+use Repository\UserProductRepository;
 
 class MainController
 
 {
-    private Product $productModel;
-    private UserProduct $userProductModel;
+    private ProductRepository $productRepository;
+    private UserProductRepository $userProductRepository;
     public function __construct()
     {
-        $this->productModel = new Product();
-        $this->userProductModel = new UserProduct();
+        $this->productRepository = new ProductRepository();
+        $this->userProductRepository = new UserProductRepository();
     }
     public function getMain(): void
     {
@@ -23,16 +23,17 @@ class MainController
         }
         $userId = $_SESSION['user_id'];
 
-        $products = $this->productModel->getAll();
-        $userProducts = $this->userProductModel->getAllByUserId($userId);
-        $productsWithQuantity = $this->addQuantityToProducts($products,$userProducts);
+        $products = $this->addQuantityToProducts($userId);
 
-        $cartCount = $this->getCartCount($userProducts);
+        $cartCount = $this->getCartCount($products);
 
         require_once './../View/main.php';
     }
-    private function addQuantityToProducts(array $products, array $userProducts): array
+    private function addQuantityToProducts(string $userId): array
     {
+        $userProducts = $this->userProductRepository->getAllByUserId($userId);
+        $products = $this->productRepository->getAll();
+
         $productsWithQuantity = [];
 
         if (empty($userProducts)) {
@@ -45,7 +46,7 @@ class MainController
             foreach ($products as $product) {
                 foreach ($userProducts as $userProduct) {
 
-                    if ($product->getId() === $userProduct->getProductId()) {
+                    if ($product->getId() === $userProduct->getProduct()->getId()) {
                         $product->setQuantity($userProduct->getQuantity());
                         break;
                     }

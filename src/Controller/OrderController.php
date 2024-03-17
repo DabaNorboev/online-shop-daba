@@ -2,26 +2,26 @@
 
 namespace Controller;
 
-use Model\Order;
-use Model\OrderProduct;
-use Model\Product;
-use Model\UserProduct;
+use Repository\OrderRepository;
+use Repository\OrderProductRepository;
+use Repository\ProductRepository;
+use Repository\UserProductRepository;
 
 class OrderController
 {
-    private Order $orderModel;
-    private OrderProduct $orderProductModel;
-    private UserProduct $userProductModel;
-    private Product $productModel;
+    private OrderRepository $orderRepository;
+    private OrderProductRepository $orderProductRepository;
+    private UserProductRepository $userProductRepository;
+    private ProductRepository $productRepository;
     public function __construct()
     {
-        $this->orderModel = new Order();
-        $this->userProductModel = new UserProduct();
-        $this->productModel = new Product();
-        $this->orderProductModel = new OrderProduct();
+        $this->orderRepository = new OrderRepository();
+        $this->userProductRepository = new UserProductRepository();
+        $this->productRepository = new ProductRepository();
+        $this->orderProductRepository = new OrderProductRepository();
     }
 
-    public function getOrder()
+    public function getOrder(): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
@@ -29,7 +29,7 @@ class OrderController
         }
         $userId = $_SESSION['user_id'];
 
-        $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
+        $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
 
         $totalPrice = $this->getTotalPrice($productsOfCart);
 
@@ -43,14 +43,14 @@ class OrderController
         if (!empty($products)){
 
             foreach($products as $product){
-                $totalPrice += $product->getSum();
+                $totalPrice += $product->getProduct()->getPrice()*$product->getQuantity();
             }
         }
 
         return $totalPrice;
     }
 
-    public function postOrder(array $data)
+    public function postOrder(array $data): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
@@ -66,19 +66,19 @@ class OrderController
             $address = $data['address'];
             $comment = $data['comment'];
 
-            $this->orderModel->create($userId, $name, $phoneNumber, $address, $comment);
+            $this->orderRepository->create($userId, $name, $phoneNumber, $address, $comment);
 
-            $orderId = $this->orderModel->getOrderId();
+            $orderId = $this->orderRepository->getOrderId();
 
-            $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
+            $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
 
             foreach ($productsOfCart as $product) {
-                $productId = $product->getId();
+                $productId = $product->getProduct()->getId();
                 $quantity = $product->getQuantity();
-                $this->orderProductModel->add($orderId,$productId,$quantity);
+                $this->orderProductRepository->add($orderId,$productId,$quantity);
             }
 
-            $this->userProductModel->clearByUserId($userId);
+            $this->userProductRepository->clearByUserId($userId);
         }
 
         header("Location: /order");
@@ -116,7 +116,7 @@ class OrderController
             }
         }
 
-        $productsOfCart = $this->userProductModel->getCartProductsByUserId($userId);
+        $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
 
         if (empty($productsOfCart)){
             $errors['products-of-cart'] = 'Нельзя оформить заказ, т.к ваша корзина пуста';

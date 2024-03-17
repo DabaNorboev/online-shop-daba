@@ -6,7 +6,7 @@ use Controller\CartController;
 use Controller\MainController;
 use Controller\OrderController;
 use Controller\UserController;
-use Model\Order;
+use Repository\OrderRepository;
 
 class App
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Model;
+namespace Repository;
 
-class Order extends Model
+class OrderRepository extends Repository
 {
     public function create(string $userId,string $name, string $phoneNumber, string $address, string $comment): void
     {

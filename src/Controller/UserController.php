@@ -2,15 +2,15 @@
 
 namespace Controller;
 
-use Entity\UserEntity;
-use Model\User;
+use Entity\User;
+use Repository\UserRepository;
 
 class UserController
 {
-    private User $userModel;
+    private UserRepository $userRepository;
     public function __construct()
     {
-        $this->userModel = new User();
+        $this->userRepository = new UserRepository();
     }
 
     public function getRegistrate(): void
@@ -29,7 +29,7 @@ class UserController
 
             $password = password_hash($password,PASSWORD_DEFAULT);
 
-            $this->userModel->create($name, $email, $password);
+            $this->userRepository->create($name, $email, $password);
 
             header('Location: login');
         }
@@ -42,7 +42,7 @@ class UserController
         $errors = [];
         $email = $userData['email'];
         $password = $userData['psw'];
-        $user = $this->userModel->getUserByEmail($email);
+        $user = $this->userRepository->getUserByEmail($email);
         foreach ($userData as $key=> $value)
         {
             if (isset($value)){
@@ -90,7 +90,7 @@ class UserController
         if (empty($errors)) {
             $email = $data["email"];
 
-            $user = $this->userModel->getUserByEmail($email);
+            $user = $this->userRepository->getUserByEmail($email);
 
             if (empty($user)) {
                 $errors['email'] = 'неправильный email или пароль';
@@ -107,7 +107,7 @@ class UserController
     {
         $errors = [];
         $email = $userData['email'];
-        $user = $this->userModel->getUserByEmail($email);
+        $user = $this->userRepository->getUserByEmail($email);
         if (isset($userData['email'])) {
             if (!empty($email)) {
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
