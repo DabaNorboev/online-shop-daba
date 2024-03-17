@@ -116,7 +116,7 @@ class CartController
 
         require_once './../View/cart.php';
     }
-    public function getTotalPrice(array $products): int
+    private function getTotalPrice(array $products): int
     {
         $totalPrice = 0;
 
