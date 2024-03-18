@@ -5,28 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d2f2448-23d9-4222-adf3-a8e073ced5b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Request/LoginRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Request/MainRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Request/RegistrationRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Request/Request.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Request/ChangeProductRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Request/OrderRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/CartProductEntity.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/ProductEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/UserEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/UserProductEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/UserProduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/Repository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrderRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/OrderProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrderProductRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UserProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserProductRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Autoloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Autoloader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request/LoginRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request/MainRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request/RegistrationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request/RegistrationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request/Request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/registrate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +139,8 @@
       <workItem from="1710244289821" duration="2801000" />
       <workItem from="1710314992084" duration="32346000" />
       <workItem from="1710575404194" duration="11375000" />
-      <workItem from="1710680051627" duration="12249000" />
+      <workItem from="1710680051627" duration="12763000" />
+      <workItem from="1710761414014" duration="5564000" />
     </task>
     <servers />
   </component>

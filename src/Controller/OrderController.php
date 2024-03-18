@@ -6,18 +6,17 @@ use Repository\OrderRepository;
 use Repository\OrderProductRepository;
 use Repository\ProductRepository;
 use Repository\UserProductRepository;
+use Request\OrderRequest;
 
 class OrderController
 {
     private OrderRepository $orderRepository;
     private OrderProductRepository $orderProductRepository;
     private UserProductRepository $userProductRepository;
-    private ProductRepository $productRepository;
     public function __construct()
     {
         $this->orderRepository = new OrderRepository();
         $this->userProductRepository = new UserProductRepository();
-        $this->productRepository = new ProductRepository();
         $this->orderProductRepository = new OrderProductRepository();
     }
 
@@ -50,7 +49,7 @@ class OrderController
         return $totalPrice;
     }
 
-    public function postOrder(array $data): void
+    public function postOrder(OrderRequest $request): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
@@ -58,13 +57,13 @@ class OrderController
         }
         $userId = $_SESSION['user_id'];
 
-        $errors = $this->validateOrder($data,$userId);
+        $errors = $request->validate($userId);
 
         if (empty($errors)) {
-            $name = $data['name'];
-            $phoneNumber = $data['tel'];
-            $address = $data['address'];
-            $comment = $data['comment'];
+            $name = $request->getName();
+            $phoneNumber = $request->getPhoneNumber();
+            $address = $request->getAddress();
+            $comment = $request->getComment();
 
             $this->orderRepository->create($userId, $name, $phoneNumber, $address, $comment);
 
@@ -82,46 +81,5 @@ class OrderController
         }
 
         header("Location: /order");
-    }
-    private function validateOrder(array $orderData, string $userId): array
-    {
-        $errors = [];
-
-        foreach ($orderData as $key=> $value)
-        {
-            if (isset($value)){
-                if (empty($value)) {
-                    if ($key !== 'comment'){
-                        $errors['comment'] = "Это поле не должно быть пустым";
-                    }
-                }elseif ($key === 'name'){
-                    if (mb_strlen($value, 'UTF-8') < 2) {
-                        $errors['name'] = 'Минимально допустимая длина имени - 2 символа';
-                    }
-                }elseif ($key === 'tel'){
-                    if (ctype_digit($value)) {
-                        if (mb_strlen($value, 'UTF-8') !== 11) {
-                            $errors['tel'] = 'Количество цифр в номере телефона не соответствует образцу';
-                        }
-                    } else {
-                        $errors['tel'] = 'Номер телефона может состоять только из цифр, посмотрите образец';
-                    }
-                }elseif ($key === 'address'){
-                    if (mb_strlen($value, 'UTF-8') < 5) {
-                        $errors['address'] = 'Минимально допустимая длина адреса - 5 символов';
-                    }
-                }
-            }else {
-                $errors[$key] = "Это поле не должно быть пустым";
-            }
-        }
-
-        $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
-
-        if (empty($productsOfCart)){
-            $errors['products-of-cart'] = 'Нельзя оформить заказ, т.к ваша корзина пуста';
-        }
-
-        return $errors;
     }
 }

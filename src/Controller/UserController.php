@@ -2,8 +2,9 @@
 
 namespace Controller;
 
-use Entity\User;
 use Repository\UserRepository;
+use Request\LoginRequest;
+use Request\RegistrationRequest;
 
 class UserController
 {
@@ -13,69 +14,28 @@ class UserController
         $this->userRepository = new UserRepository();
     }
 
-    public function getRegistrate(): void
+    public function getRegistration(): void
     {
-        require_once './../View/registrate.php';
+        require_once './../View/registration.php';
     }
 
-    public function postRegistrate(array $data): void
+    public function postRegistration(RegistrationRequest $request): void
     {
-        $errors = $this->validateRegistrate($data);
+        $errors = $request->validate();
 
         if (empty($errors)) {
-            $name = $data['name'];
-            $email = $data['email'];
-            $password = $data['psw'];
+            $name = $request->getName();
+            $email = $request->getEmail();
+            $password = $request->getPassword();
 
             $password = password_hash($password,PASSWORD_DEFAULT);
 
             $this->userRepository->create($name, $email, $password);
 
-            header('Location: login');
+            header('Location: /login');
         }
 
-        require_once './../View/registrate.php';
-    }
-
-    private function validateRegistrate(array $userData): array
-    {
-        $errors = [];
-        $email = $userData['email'];
-        $password = $userData['psw'];
-        $user = $this->userRepository->getUserByEmail($email);
-        foreach ($userData as $key=> $value)
-        {
-            if (isset($value)){
-                if (empty($value)) {
-                    $errors[$key] = "Это поле не должно быть пустым";
-                }elseif($key === 'name') {
-                    if (mb_strlen($value, 'UTF-8') < 2) {
-                        $errors['name'] = 'Минимально допустимая длина имени - 2 символа';
-                    }
-                }elseif ($key === 'email') {
-                    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        if (!empty($user)) {
-                            $errors['email'] = 'Пользователь с таким email уже существует';
-                        }
-                    }else {
-                        $errors['email'] = 'Некорректный формат электронной почты';
-                    }
-                }elseif ($key === 'psw') {
-                    if (mb_strlen($value, 'UTF-8') < 8) {
-                        $errors['psw'] = 'Минимально допустимая длина пароля - 8 символов';
-                    }elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/', $value)) {
-                        $errors['psw'] = 'Пароль должен содержать минимум одну заглавную букву, одну строчную букву и одну цифру';
-                    }
-                }elseif ($key === 'psw-repeat') {
-                    if ($value !== $password) {
-                        $errors['psw-repeat'] = 'Пароли не совпадают';
-                    }
-                }
-            }else {
-                $errors[$key] = "Это поле не должно быть пустым";
-            }
-        }
-        return $errors;
+        require_once './../View/registration.php';
     }
 
     public function getLogin (): void
@@ -83,12 +43,13 @@ class UserController
         require_once './../View/login.php';
     }
 
-    public function postLogin(array $data): void
+    public function postLogin(LoginRequest $request): void
     {
-        $errors = $this->validateLogin($data);
+
+        $errors = $request->validate();
 
         if (empty($errors)) {
-            $email = $data["email"];
+            $email = $request->getEmail();
 
             $user = $this->userRepository->getUserByEmail($email);
 
@@ -97,47 +58,10 @@ class UserController
             } else {
                 session_start();
                 $_SESSION['user_id'] = $user->getId();
-                header('Location: main');
+                header('Location: /main');
             }
         }
         require_once './../View/login.php';
-    }
-
-    private function validateLogin(array $userData) : array
-    {
-        $errors = [];
-        $email = $userData['email'];
-        $user = $this->userRepository->getUserByEmail($email);
-        if (isset($userData['email'])) {
-            if (!empty($email)) {
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $errors['email'] = 'Некорректный формат электронной почты';
-                } elseif (empty($user)) {
-                    $errors['email'] = 'неправильный email или пароль';
-                }
-            } else {
-                $errors['email'] = 'Это поле не должно быть пустым';
-            }
-        } else {
-            $errors['email'] = 'Это поле не должно быть пустым';
-        }
-
-        if (isset($userData['password'])) {
-            $password = $userData['password'];
-            if (!empty($password)) {
-
-                if (empty($user)) {
-                    $errors['email'] = 'неправильный email или пароль';
-                } elseif (!password_verify($password, $user->getPassword())) {
-                    $errors['psw'] = 'неправильный email или пароль';
-                }
-            } else {
-                $errors['psw'] = 'Это поле не должно быть пустым';
-            }
-        } else {
-            $errors['psw'] = 'Это поле не должно быть пустым';
-        }
-        return $errors;
     }
     public function logout(): void
     {

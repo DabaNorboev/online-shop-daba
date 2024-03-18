@@ -6,19 +6,24 @@ use Controller\CartController;
 use Controller\MainController;
 use Controller\OrderController;
 use Controller\UserController;
-use Repository\OrderRepository;
+use Request\ChangeProductRequest;
+use Request\LoginRequest;
+use Request\OrderRequest;
+use Request\RegistrationRequest;
+use Request\Request;
 
 class App
 {
     private array $routes = [
-        '/registrate' => [
+        '/registration' => [
             'GET' => [
                 'class' => UserController::class,
-                'method' => 'getRegistrate',
+                'method' => 'getRegistration',
             ],
             'POST' => [
                 'class' => UserController::class,
-                'method' => 'postRegistrate',
+                'method' => 'postRegistration',
+                'request-class' => RegistrationRequest::class
             ],
         ],
         '/login' => [
@@ -29,6 +34,13 @@ class App
             'POST' => [
                 'class' => UserController::class,
                 'method' => 'postLogin',
+                'request-class' => LoginRequest::class
+            ]
+        ],
+        '/logout' => [
+            'POST' => [
+                'class' => UserController::class,
+                'method' => 'logout',
             ]
         ],
         '/main' => [
@@ -37,54 +49,52 @@ class App
                 'method' => 'getMain',
             ]
         ],
-        '/logout' => [
-            'POST' => [
-                'class' => UserController::class,
-                'method' => 'logout'
-            ]
-        ],
-        '/add-product' => [
-            'POST' => [
-                'class' => CartController::class,
-                'method' => 'addProduct',
-            ]
-        ],
-        '/rm-product' => [
-            'POST' => [
-                'class' => CartController::class,
-                'method' => 'removeProduct',
-            ]
-        ],
         '/cart' => [
             'GET' => [
                 'class' => CartController::class,
                 'method' => 'getCart',
             ]
         ],
-        '/order' => [
-            'GET' => [
-                'class' => OrderController::class,
-                'method' => 'getOrder'
-            ],
+        '/add-product' => [
             'POST' => [
-                'class' => OrderController::class,
-                'method' => 'postOrder'
+                'class' => CartController::class,
+                'method' => 'addProduct',
+                'request-class' => ChangeProductRequest::class
             ]
         ],
-        '/clear-cart' => [
-            "POST" => [
+        '/rm-product' => [
+            'POST' => [
                 'class' => CartController::class,
-                'method' => 'clearCart'
+                'method' => 'removeProduct',
+                'request-class' => ChangeProductRequest::class
             ]
         ],
         '/clear-product' => [
             "POST" => [
                 'class' => CartController::class,
-                'method' => 'clearProduct'
+                'method' => 'clearProduct',
+                'request-class' => ChangeProductRequest::class
             ]
-        ]
+        ],
+        '/clear-cart' => [
+            "POST" => [
+                'class' => CartController::class,
+                'method' => 'clearCart',
+            ]
+        ],
+        '/order' => [
+            'GET' => [
+                'class' => OrderController::class,
+                'method' => 'getOrder',
+            ],
+            'POST' => [
+                'class' => OrderController::class,
+                'method' => 'postOrder',
+                'request-class' => OrderRequest::class
+            ]
+        ],
     ];
-    public function run()
+    public function run(): void
     {
         $uri = $_SERVER['REQUEST_URI'];
 
@@ -98,8 +108,18 @@ class App
                 $class = $handler['class'];
                 $method = $handler['method'];
 
-                $obj = new $class;
-                $obj->$method($_POST);
+                if (isset($handler['request-class'])){
+                    $requestClass = $handler['request-class'];
+                    $request = new $requestClass($method, $uri, headers_list(), $_POST);
+
+                    $obj = new $class;
+                    $obj->$method($request);
+
+                } else {
+                    $obj = new $class;
+                    $obj->$method();
+                }
+
             } else {
                 echo "$method не поддерживается для $uri";
             }

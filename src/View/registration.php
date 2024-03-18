@@ -4,7 +4,7 @@
 
     <title>Регистрация</title>
 </head>
-<form action="registrate" method="post">
+<form action="registration" method="post">
     <div class="container">
         <h1>Регистрация</h1>
         <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>

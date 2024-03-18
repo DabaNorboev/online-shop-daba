@@ -4,7 +4,7 @@ namespace Core;
 
 class Autoloader
 {
-    public static function registrate(string $directory): void
+    public static function register(string $directory): void
     {
 
         $autoloader = function (string $className) use ($directory)

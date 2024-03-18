@@ -4,10 +4,10 @@ namespace Request;
 
 class Request
 {
-    private string $method;
-    private string $uri;
-    private array $headers;
-    private array $body;
+    protected string $method;
+    protected string $uri;
+    protected array $headers;
+    protected array $body;
     public function __construct(string $method, string $uri, array $headers, array $body)
     {
         $this->method = $method;
