@@ -5,6 +5,7 @@
 <div class="wrapper">
     <div class="row">
         <form action="/order" method="post">
+
             <div class="col-7 col">
                 <h3 class="topborder"><span>Адресс доставки</span></h3>
                 <div class="width50 padright">
@@ -40,6 +41,9 @@
                 <label style="color: red"><?php echo $errors['products-of-cart'] ?? '';?></label>
 
                 <input type="submit" name="submit" value="Оформить заказ" class="redbutton">
+
+                <a href="/main" class="redbutton">Каталог</a>
+
             </div>
         </form>
     </div>

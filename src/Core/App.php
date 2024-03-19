@@ -107,18 +107,16 @@ class App
 
                 $class = $handler['class'];
                 $method = $handler['method'];
+                $requestClass = Request::class;
 
                 if (isset($handler['request-class'])){
                     $requestClass = $handler['request-class'];
-                    $request = new $requestClass($method, $uri, headers_list(), $_POST);
-
-                    $obj = new $class;
-                    $obj->$method($request);
-
-                } else {
-                    $obj = new $class;
-                    $obj->$method();
                 }
+
+                $request = new $requestClass($method, $uri, headers_list(), $_POST);
+
+                $obj = new $class;
+                $obj->$method($request);
 
             } else {
                 echo "$method не поддерживается для $uri";
