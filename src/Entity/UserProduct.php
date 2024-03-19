@@ -4,11 +4,11 @@ namespace Entity;
 
 class UserProduct
 {
-    private string $id;
+    private int $id;
     private User $user;
     private Product $product;
     private int $quantity;
-    public function __construct(string $id, User $user, Product $product, string $quantity)
+    public function __construct(int $id, User $user, Product $product, int $quantity)
     {
         $this->id = $id;
         $this->user = $user;
@@ -16,12 +16,12 @@ class UserProduct
         $this->quantity = $quantity;
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

@@ -16,7 +16,7 @@ class ProductRepository extends Repository
         }
         $productsArray = [];
         foreach ($products as $product){
-            $productsArray[] = new Product($product['id'],$product['name'],$product['description'],$product['price'],$product['img_url']);
+            $productsArray[] = $this->hydrate($product);
         }
         return $productsArray;
     }
@@ -28,6 +28,11 @@ class ProductRepository extends Repository
         if (empty($product)) {
             return null;
         }
+        return $this->hydrate($product);
+    }
+
+    private function hydrate(array $product): Product
+    {
         return new Product($product['id'],$product['name'],$product['description'],$product['price'],$product['img_url']);
     }
 }

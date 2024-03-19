@@ -4,12 +4,12 @@ namespace Entity;
 
 class User
 {
-    private string $id;
+    private int $id;
     private string $name;
     private string $email;
     private string $password;
 
-    public function __construct(string $id, string $name, string $email, string $password)
+    public function __construct(int $id, string $name, string $email, string $password)
     {
         $this->id = $id;
         $this->name = $name;
@@ -17,12 +17,12 @@ class User
         $this->password = $password;
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

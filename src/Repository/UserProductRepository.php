@@ -30,10 +30,7 @@ class UserProductRepository extends Repository
             return null;
         }
 
-        return new UserProduct($userProduct['id'],
-            new User($userProduct['user_id'],$userProduct['user_name'],$userProduct['email'],$userProduct['password']),
-            new Product($userProduct['product_id'],$userProduct['product_name'],$userProduct['description'],$userProduct['price'],$userProduct['img_url']),
-            $userProduct['quantity']);
+        return $this->hydrate($userProduct);
     }
 
     public function getAllByUserId($userId): array
@@ -56,10 +53,7 @@ class UserProductRepository extends Repository
 
         foreach ($userProducts as $userProduct){
 
-            $userProductsArray[] = new UserProduct($userProduct['id'],
-                new User($userProduct['user_id'],$userProduct['user_name'],$userProduct['email'],$userProduct['password']),
-                new Product($userProduct['product_id'],$userProduct['product_name'],$userProduct['description'],$userProduct['price'],$userProduct['img_url']),
-                $userProduct['quantity']);
+            $userProductsArray[] = $this->hydrate($userProduct);
         }
         return $userProductsArray;
     }
@@ -92,5 +86,13 @@ class UserProductRepository extends Repository
     {
         $stmt = $this->pdo->prepare("DELETE FROM user_products WHERE user_id=:user_id AND product_id = :product_id");
         $stmt->execute(['user_id' => $userId, 'product_id' => $productId]);
+    }
+
+    private function hydrate(array $userProduct): UserProduct
+    {
+        return new UserProduct($userProduct['id'],
+            new User($userProduct['user_id'],$userProduct['user_name'],$userProduct['email'],$userProduct['password']),
+            new Product($userProduct['product_id'],$userProduct['product_name'],$userProduct['description'],$userProduct['price'],$userProduct['img_url']),
+            $userProduct['quantity']);
     }
 }

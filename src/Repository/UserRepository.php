@@ -16,11 +16,16 @@ class UserRepository extends Repository
         if (empty($user)) {
             return null;
         }
-         return new User($user['id'],$user['name'],$user['email'],$user['password']);
+         return $this->hydrate($user);
     }
      public function create(string $name, string $email, string $password): void
      {
          $stmt = $this->pdo->prepare("INSERT INTO users (name,email,password) VALUES (:name, :email, :password)");
          $stmt->execute(['name' => $name, 'email' => $email, 'password' => $password]);
      }
+
+    private function hydrate(array $user): User
+    {
+        return new User($user['id'],$user['name'],$user['email'],$user['password']);
+    }
 }

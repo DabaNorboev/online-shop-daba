@@ -78,19 +78,19 @@ class CartController
 
         $userId = $_SESSION['user_id'];
 
-        $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
+        $userProducts = $this->userProductRepository->getAllByUserId($userId);
 
-        $totalPrice = $this->getTotalPrice($productsOfCart);
+        $totalPrice = $this->getTotalPrice($userProducts);
 
         require_once './../View/cart.php';
     }
-    private function getTotalPrice(array $products): int
+    private function getTotalPrice(array $userProducts): int
     {
         $totalPrice = 0;
 
-        if (!empty($products)){
-            foreach($products as $product){
-                $totalPrice += $product->getProduct()->getPrice()*$product->getQuantity();
+        if (!empty($userProducts)){
+            foreach($userProducts as $userProduct){
+                $totalPrice += $userProduct->getProduct()->getPrice()*$userProduct->getQuantity();
             }
         }
 

@@ -1,3 +1,6 @@
 ./.idea
-./.idea/
+./.idea/workspace.xml
+./.idea/vcs.xml
+./.idea/php.xml
+./.idea/dataSources
 ./.docker/postgres

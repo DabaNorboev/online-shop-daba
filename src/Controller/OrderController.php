@@ -28,21 +28,23 @@ class OrderController
         }
         $userId = $_SESSION['user_id'];
 
-        $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
+        $userProducts = $this->userProductRepository->getAllByUserId($userId);
 
-        $totalPrice = $this->getTotalPrice($productsOfCart);
+        $totalPrice = $this->getTotalPrice($userProducts);
 
         require_once './../View/order.php';
     }
 
-    public function getTotalPrice(array $products): int
+    public function getTotalPrice(array $userProducts): int
     {
         $totalPrice = 0;
 
-        if (!empty($products)){
+        if (!empty($userProducts)){
 
-            foreach($products as $product){
-                $totalPrice += $product->getProduct()->getPrice()*$product->getQuantity();
+            foreach($userProducts as $userProduct){
+                $price = $userProduct->getProduct()->getPrice();
+
+                $totalPrice += $price * $userProduct->getQuantity();
             }
         }
 
@@ -69,11 +71,13 @@ class OrderController
 
             $orderId = $this->orderRepository->getOrderId();
 
-            $productsOfCart = $this->userProductRepository->getAllByUserId($userId);
+            $userProducts = $this->userProductRepository->getAllByUserId($userId);
 
-            foreach ($productsOfCart as $product) {
-                $productId = $product->getProduct()->getId();
-                $quantity = $product->getQuantity();
+            foreach ($userProducts as $userProduct) {
+
+                $productId = $userProduct->getProduct()->getId();
+                $quantity = $userProduct->getQuantity();
+
                 $this->orderProductRepository->add($orderId,$productId,$quantity);
             }
 

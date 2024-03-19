@@ -4,14 +4,14 @@ namespace Entity;
 
 class Product
 {
-    private string $id;
+    private int $id;
     private string $name;
     private string $description;
-    private string $price;
+    private int $price;
     private string $imgUrl;
     private string $quantity;
 
-    public function __construct(string $id, string $name, string $description, string $price, string $imgUrl)
+    public function __construct(int $id, string $name, string $description, int $price, string $imgUrl)
     {
         $this->id = $id;
         $this->name = $name;
@@ -20,12 +20,12 @@ class Product
         $this->imgUrl = $imgUrl;
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -50,12 +50,12 @@ class Product
         $this->description = $description;
     }
 
-    public function getPrice(): string
+    public function getPrice(): int
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): void
+    public function setPrice(int $price): void
     {
         $this->price = $price;
     }
@@ -70,14 +70,15 @@ class Product
         $this->imgUrl = $imgUrl;
     }
 
-    public function getQuantity(): string
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
 
-    public function setQuantity(string $quantity): void
+    public function setQuantity(int $quantity): void
     {
         $this->quantity = $quantity;
     }
+
 
 }
