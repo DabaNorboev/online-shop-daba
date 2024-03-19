@@ -31,9 +31,9 @@
                     <h4 class="inline">Продукт</h4>
                     <h4 class="inline alignright">Цена</h4>
                 </div>
-                <?php foreach ($productsOfCart as $product): ?>
+                <?php foreach ($userProducts as $userProduct): ?>
                 <div>
-                    <p class="prod-description inline"><?php echo $product->getProduct()->getName(); ?><div class="qty inline"><span class="smalltxt">x</span> <?php echo $product->getQuantity(); ?></div><div class="qty inline"><span class="smalltxt right-div"><?php echo $product->getProduct()->getPrice()*$product->getQuantity(); ?></span> </div></p>
+                    <p class="prod-description inline"><?php echo $userProduct->getProduct()->getName(); ?><div class="qty inline"><span class="smalltxt">x</span> <?php echo $userProduct->getQuantity(); ?></div><div class="qty inline"><span class="smalltxt right-div"><?php echo $userProduct->getProduct()->getPrice()*$userProduct->getQuantity(); ?></span> </div></p>
                 </div>
                 <?php endforeach; ?>
                 <div><h5>Сумма заказа</h5><span class="smalltxt"></span> <?php echo $totalPrice; ?></div>
