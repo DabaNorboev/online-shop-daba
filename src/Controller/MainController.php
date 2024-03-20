@@ -4,31 +4,43 @@ namespace Controller;
 
 use Repository\ProductRepository;
 use Repository\UserProductRepository;
+use Service\CartService;
+use Service\UserService;
 
 class MainController
 
 {
     private ProductRepository $productRepository;
+
     private UserProductRepository $userProductRepository;
+
+    private UserService $userService;
+
+    private CartService $cartService;
+
     public function __construct()
     {
         $this->productRepository = new ProductRepository();
         $this->userProductRepository = new UserProductRepository();
+        $this->userService = new UserService();
+        $this->cartService = new CartService();
     }
     public function getMain(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->userService->check()) {
             header("Location: /login");
         }
-        $userId = $_SESSION['user_id'];
+
+        $user = $this->userService->getCurrentUser();
+        $userId = $user->getId();
 
         $products = $this->addQuantityToProducts($userId);
 
-        $cartCount = $this->getCartCount($products);
+        $cartCount = $this->cartService->getCartCount($products);
 
         require_once './../View/main.php';
     }
+
     private function addQuantityToProducts(string $userId): array
     {
         $userProducts = $this->userProductRepository->getAllByUserId($userId);
@@ -59,13 +71,5 @@ class MainController
         }
 
         return $productsWithQuantity;
-    }
-    private function getCartCount(array $products): int
-    {
-        $count = 0;
-        foreach ($products as $product) {
-            $count += $product->getQuantity();
-        }
-        return $count;
     }
 }

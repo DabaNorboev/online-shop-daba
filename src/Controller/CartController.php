@@ -4,37 +4,39 @@ namespace Controller;
 
 use Repository\UserProductRepository;
 use Request\ChangeProductRequest;
+use Service\UserService;
+use Service\CartService;
 
 class CartController
 {
     private UserProductRepository $userProductRepository;
+
+    private CartService $cartService;
+
+    private UserService $userService;
+
     public function __construct()
     {
         $this->userProductRepository = new UserProductRepository();
+        $this->cartService = new CartService();
+        $this->userService = new UserService();
     }
+
     public function addProduct(ChangeProductRequest $request): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->userService->check()) {
             header("Location: /login");
         }
 
-        $userId = $_SESSION['user_id'];
+        $user = $this->userService->getCurrentUser();
+        $userId = $user->getId();
 
         $errors = $request->validate();
 
         if (empty($errors)) {
             $productId = $request->getProductId();
-            $quantity = 1;
 
-            $userProduct = $this->userProductRepository->getOneByUserIdProductId($userId,$productId);
-
-            if (empty($userProduct)) {
-                $this->userProductRepository->add($userId, $productId, $quantity);
-            }
-            else {
-                $this->userProductRepository->updateQuantityPlus($userId, $productId, $quantity);
-            }
+            $this->cartService->addProduct($productId,$userId);
         }
 
         header("Location: /main");
@@ -42,28 +44,19 @@ class CartController
 
     public function removeProduct(ChangeProductRequest $request): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->userService->check()) {
             header("Location: /login");
         }
-        $userId = $_SESSION['user_id'];
+
+        $user = $this->userService->getCurrentUser();
+        $userId = $user->getId();
 
         $errors = $request->validate();
 
         if (empty($errors)) {
-
             $productId = $request->getProductId();
-            $quantity = 1;
 
-            $userProduct = $this->userProductRepository->getOneByUserIdProductId($userId,$productId);
-
-            if (!empty($userProduct)) {
-                if ($userProduct->getQuantity() === 1) {
-                    $this->userProductRepository->remove($userId, $productId);
-                } elseif ($userProduct->getQuantity() !== 0){
-                    $this->userProductRepository->updateQuantityMinus($userId, $productId, $quantity);
-                }
-            }
+            $this->cartService->removeProduct($productId,$userId);
         }
 
         header("Location: /main");
@@ -71,51 +64,42 @@ class CartController
 
     public function getCart(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])){
+        if (!$this->userService->check()) {
             header("Location: /login");
         }
 
-        $userId = $_SESSION['user_id'];
+        $user = $this->userService->getCurrentUser();
+        $userId = $user->getId();
 
         $userProducts = $this->userProductRepository->getAllByUserId($userId);
 
-        $totalPrice = $this->getTotalPrice($userProducts);
+        $totalPrice = $this->cartService->getTotalPrice($userProducts);
 
         require_once './../View/cart.php';
     }
-    private function getTotalPrice(array $userProducts): int
-    {
-        $totalPrice = 0;
 
-        if (!empty($userProducts)){
-            foreach($userProducts as $userProduct){
-                $totalPrice += $userProduct->getProduct()->getPrice()*$userProduct->getQuantity();
-            }
-        }
-
-        return $totalPrice;
-    }
     public function clearCart(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])){
+        if (!$this->userService->check()) {
             header("Location: /login");
         }
 
-        $userId = $_SESSION['user_id'];
+        $user = $this->userService->getCurrentUser();
+        $userId = $user->getId();
 
         $this->userProductRepository->clearByUserId($userId);
 
         header("Location: /main");
     }
+
     public function clearProduct(ChangeProductRequest $request): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])){
+        if (!$this->userService->check()) {
             header("Location: /login");
         }
-        $userId = $_SESSION['user_id'];
+
+        $user = $this->userService->getCurrentUser();
+        $userId = $user->getId();
 
         $errors = $request->validate();
 
