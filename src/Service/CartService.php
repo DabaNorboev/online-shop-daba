@@ -3,7 +3,6 @@
 namespace Service;
 
 use Repository\UserProductRepository;
-use Request\ChangeProductRequest;
 
 class CartService
 {
@@ -14,8 +13,10 @@ class CartService
         $this->userProductRepository = new UserProductRepository();
     }
 
-    public function getTotalPrice(array $userProducts): int
+    public function getTotalPrice(int $userId): int
     {
+        $userProducts = $this->getCartProducts($userId);
+
         $totalPrice = 0;
 
         if (!empty($userProducts)){
@@ -66,5 +67,20 @@ class CartService
         }
 
         return $count;
+    }
+
+    public function getCartProducts(int $userId): array
+    {
+        return $this->userProductRepository->getAllByUserId($userId);
+    }
+
+    public function clearCartByUserId(int $userId): void
+    {
+        $this->userProductRepository->clearByUserId($userId);
+    }
+
+    public function clearProductByUserIdProductId(int $userId, $productId): void
+    {
+        $this->userProductRepository->clearProductByUserIdProductId($userId,$productId);
     }
 }

@@ -5,13 +5,17 @@ namespace Controller;
 use Repository\UserRepository;
 use Request\LoginRequest;
 use Request\RegistrationRequest;
+use Service\AuthenticationService;
 
 class UserController
 {
     private UserRepository $userRepository;
+    private AuthenticationService $authenticationService;
+
     public function __construct()
     {
         $this->userRepository = new UserRepository();
+        $this->authenticationService = new AuthenticationService();
     }
 
     public function getRegistration(): void
@@ -51,26 +55,15 @@ class UserController
         if (empty($errors)) {
             $email = $request->getEmail();
 
-            $user = $this->userRepository->getUserByEmail($email);
+            $this->authenticationService->login($email);
 
-            if (empty($user)) {
-                $errors['email'] = 'неправильный email или пароль';
-            } else {
-                session_start();
-                $_SESSION['user_id'] = $user->getId();
-                header('Location: /main');
-            }
+            header('Location: /main');
         }
         require_once './../View/login.php';
     }
     public function logout(): void
     {
-        session_start();
-        if (isset($_SESSION['user_id'])){
-            unset($_SESSION['user_id']);
-            session_unset();
-            session_destroy();
-        }
-        header("Location: /login");
+        $this->authenticationService->logout();
+        header('Location: /login');
     }
 }

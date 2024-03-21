@@ -5,7 +5,7 @@ namespace Service;
 use Entity\User;
 use Repository\UserRepository;
 
-class UserService
+class AuthenticationService
 {
     private UserRepository $userRepository;
 
@@ -16,7 +16,9 @@ class UserService
 
     public function check(): bool
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
         return isset($_SESSION['user_id']);
     }
@@ -31,4 +33,24 @@ class UserService
 
         return null;
     }
+
+    public function login(string $email): void
+    {
+        if (!$this->check()) {
+            $user = $this->userRepository->getUserByEmail($email);
+
+            $_SESSION['user_id'] = $user->getId();
+        }
+    }
+
+    public function logout(): void
+    {
+        if ($this->check()){
+            unset($_SESSION['user_id']);
+            session_unset();
+            session_destroy();
+        }
+    }
+
+
 }

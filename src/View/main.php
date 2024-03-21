@@ -11,7 +11,7 @@
 <body>
 <h2>Каталог товаров</h2>
 
-    <form action = "/logout" method = "get">
+    <form action = "/logout" method = "post">
         <button type = "submit">LOGOUT</button>
     </form>
 <form action = "/clear-cart" method = "post">

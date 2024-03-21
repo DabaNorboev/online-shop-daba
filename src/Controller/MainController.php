@@ -5,7 +5,7 @@ namespace Controller;
 use Repository\ProductRepository;
 use Repository\UserProductRepository;
 use Service\CartService;
-use Service\UserService;
+use Service\AuthenticationService;
 
 class MainController
 
@@ -14,7 +14,7 @@ class MainController
 
     private UserProductRepository $userProductRepository;
 
-    private UserService $userService;
+    private AuthenticationService $authenticationService;
 
     private CartService $cartService;
 
@@ -22,16 +22,16 @@ class MainController
     {
         $this->productRepository = new ProductRepository();
         $this->userProductRepository = new UserProductRepository();
-        $this->userService = new UserService();
+        $this->authenticationService = new AuthenticationService();
         $this->cartService = new CartService();
     }
     public function getMain(): void
     {
-        if (!$this->userService->check()) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
 
-        $user = $this->userService->getCurrentUser();
+        $user = $this->authenticationService->getCurrentUser();
         $userId = $user->getId();
 
         $products = $this->addQuantityToProducts($userId);

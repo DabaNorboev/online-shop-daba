@@ -2,53 +2,48 @@
 
 namespace Controller;
 
-use Repository\UserProductRepository;
 use Request\OrderRequest;
-use Service\UserService;
+use Service\AuthenticationService;
 use Service\CartService;
 use Service\OrderService;
 
 class OrderController
 {
-    private UserProductRepository $userProductRepository;
-
     private OrderService $orderService;
 
     private CartService $cartService;
 
-    private UserService $userService;
+    private AuthenticationService $authenticationService;
 
     public function __construct()
     {
-        $this->userProductRepository = new UserProductRepository();
         $this->orderService = new OrderService();
         $this->cartService = new CartService();
-        $this->userService = new UserService();
+        $this->authenticationService = new AuthenticationService();
     }
 
     public function getOrder(): void
     {
-        if (!$this->userService->check()) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
 
-        $user = $this->userService->getCurrentUser();
+        $user = $this->authenticationService->getCurrentUser();
         $userId = $user->getId();
 
-        $userProducts = $this->userProductRepository->getAllByUserId($userId);
-
-        $totalPrice = $this->cartService->getTotalPrice($userProducts);
+        $cartProducts = $this->cartService->getCartProducts($userId);
+        $totalPrice = $this->cartService->getTotalPrice($userId);
 
         require_once './../View/order.php';
     }
 
     public function postOrder(OrderRequest $request): void
     {
-        if (!$this->userService->check()) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
 
-        $user = $this->userService->getCurrentUser();
+        $user = $this->authenticationService->getCurrentUser();
         $userId = $user->getId();
 
         $errors = $request->validate($userId);

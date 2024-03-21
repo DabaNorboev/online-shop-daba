@@ -14,86 +14,7 @@ use Request\Request;
 
 class App
 {
-    private array $routes = [
-        '/registration' => [
-            'GET' => [
-                'class' => UserController::class,
-                'method' => 'getRegistration',
-            ],
-            'POST' => [
-                'class' => UserController::class,
-                'method' => 'postRegistration',
-                'request-class' => RegistrationRequest::class
-            ],
-        ],
-        '/login' => [
-            'GET' => [
-                'class' => UserController::class,
-                'method' => 'getLogin',
-            ],
-            'POST' => [
-                'class' => UserController::class,
-                'method' => 'postLogin',
-                'request-class' => LoginRequest::class
-            ]
-        ],
-        '/logout' => [
-            'POST' => [
-                'class' => UserController::class,
-                'method' => 'logout',
-            ]
-        ],
-        '/main' => [
-            'GET' => [
-                'class' => MainController::class,
-                'method' => 'getMain',
-            ]
-        ],
-        '/cart' => [
-            'GET' => [
-                'class' => CartController::class,
-                'method' => 'getCart',
-            ]
-        ],
-        '/add-product' => [
-            'POST' => [
-                'class' => CartController::class,
-                'method' => 'addProduct',
-                'request-class' => ChangeProductRequest::class
-            ]
-        ],
-        '/rm-product' => [
-            'POST' => [
-                'class' => CartController::class,
-                'method' => 'removeProduct',
-                'request-class' => ChangeProductRequest::class
-            ]
-        ],
-        '/clear-product' => [
-            "POST" => [
-                'class' => CartController::class,
-                'method' => 'clearProduct',
-                'request-class' => ChangeProductRequest::class
-            ]
-        ],
-        '/clear-cart' => [
-            "POST" => [
-                'class' => CartController::class,
-                'method' => 'clearCart',
-            ]
-        ],
-        '/order' => [
-            'GET' => [
-                'class' => OrderController::class,
-                'method' => 'getOrder',
-            ],
-            'POST' => [
-                'class' => OrderController::class,
-                'method' => 'postOrder',
-                'request-class' => OrderRequest::class
-            ]
-        ],
-    ];
+    private array $routes = [];
     public function run(): void
     {
         $uri = $_SERVER['REQUEST_URI'];
@@ -125,4 +46,31 @@ class App
             require_once './../View/404.html';
         }
     }
+
+    public function get(string $routeName, string $class, string $method, string $requestClass = null): void
+    {
+        $this->routes[$routeName]['GET'] = [
+            'class' => $class,
+            'method' => $method,
+            'request-class' => $requestClass,
+        ];
+    }
+
+    public function post(string $routeName, string $class, string $method, string $requestClass = null): void
+    {
+        $this->routes[$routeName]['POST'] = [
+            'class' => $class,
+            'method' => $method,
+            'request-class' => $requestClass,
+        ];
+    }
+
+//    public function addRoute(string $routeName, string $class, string $method, string $requestMethod, string $requestClass = null): void
+//    {
+//        $this->routes[$routeName][$requestMethod] = [
+//            'class' => $class,
+//            'method' => $method,
+//            'request-class' => $requestClass,
+//        ];
+//    }
 }
