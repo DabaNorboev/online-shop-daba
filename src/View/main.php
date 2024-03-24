@@ -29,7 +29,11 @@
             <p class="price"><?php echo $product->getPrice(); ?> руб</p>
             <p><?php echo $product->getDescription(); ?></p>
 
-            <p class="price"><?php echo $product->getQuantity(); ?></p>
+            <?php if (isset($userProducts[$product->getId()])): ?>
+                <p class="price"><?php echo $userProducts[$product->getId()]->getQuantity(); ?></p>
+            <?php else: ?>
+                <p class="price">0</p>
+            <?php endif; ?>
             <form action = "/add-product" method = "post">
                 <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $product->getId(); ?>">
                 <input type="hidden" name="quantity" id="quantity" required value = 1>

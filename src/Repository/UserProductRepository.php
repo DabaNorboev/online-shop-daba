@@ -53,7 +53,7 @@ class UserProductRepository extends Repository
 
         foreach ($userProducts as $userProduct){
 
-            $userProductsArray[] = $this->hydrate($userProduct);
+            $userProductsArray[$userProduct['product_id']] = $this->hydrate($userProduct);
         }
         return $userProductsArray;
     }

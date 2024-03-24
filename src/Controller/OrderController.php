@@ -31,8 +31,8 @@ class OrderController
         $user = $this->authenticationService->getCurrentUser();
         $userId = $user->getId();
 
-        $cartProducts = $this->cartService->getCartProducts($userId);
-        $totalPrice = $this->cartService->getTotalPrice($userId);
+        $userProducts = $this->cartService->getProducts();
+        $totalPrice = $this->cartService->getTotalPrice();
 
         require_once './../View/order.php';
     }

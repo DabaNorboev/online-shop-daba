@@ -9,7 +9,6 @@ class Product
     private string $description;
     private int $price;
     private string $imgUrl;
-    private string $quantity;
 
     public function __construct(int $id, string $name, string $description, int $price, string $imgUrl)
     {
@@ -69,16 +68,4 @@ class Product
     {
         $this->imgUrl = $imgUrl;
     }
-
-    public function getQuantity(): int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): void
-    {
-        $this->quantity = $quantity;
-    }
-
-
 }

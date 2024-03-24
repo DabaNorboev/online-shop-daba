@@ -19,15 +19,15 @@
 <a href="/main" class="button-cart">Каталог</a>
 <ul class="catalog">
 
-    <?php foreach ($cartProducts as $cartProduct): ?>
+    <?php foreach ($userProducts as $userProduct): ?>
             <li class="catalog-item">
-                <h3><?php echo $cartProduct->getProduct()->getName(); ?></h3>
-                <img src="<?php echo $cartProduct->getProduct()->getImgUrl(); ?>" alt="Изображение товара">
+                <h3><?php echo $userProduct->getProduct()->getName(); ?></h3>
+                <img src="<?php echo $userProduct->getProduct()->getImgUrl(); ?>" alt="Изображение товара">
 <!--                <p class="price">Цена за шт: --><?php //echo $product['price'] ?><!-- руб</p>-->
-                <p class="price">Количество: <?php echo $cartProduct->getQuantity(); ?> шт</p>
-                <p class="price">Цена: <?php echo $cartProduct->getProduct()->getPrice()*$cartProduct->getQuantity(); ?> руб</p>
+                <p class="price">Количество: <?php echo $userProduct->getQuantity(); ?> шт</p>
+                <p class="price">Цена: <?php echo $userProduct->getProduct()->getPrice()*$userProduct->getQuantity(); ?> руб</p>
                 <form action = "/clear-product" method="post">
-                    <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $cartProduct->getProduct()->getId(); ?>">
+                    <input type="hidden" name="product_id" id="product_id" required value = "<?php echo $userProduct->getProduct()->getId(); ?>">
                     <button type="submit" class="registerbtn">Удалить продукт</button>
                     <p style="color: black"><?php echo $errors['quantity'] ?? '';?></p>
                 </form>

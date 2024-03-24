@@ -32,7 +32,7 @@ class CartController
         if (empty($errors)) {
             $productId = $request->getProductId();
 
-            $this->cartService->addProduct($productId,$userId);
+            $this->cartService->addProduct($productId);
         }
 
         header("Location: /main");
@@ -52,7 +52,7 @@ class CartController
         if (empty($errors)) {
             $productId = $request->getProductId();
 
-            $this->cartService->removeProduct($productId,$userId);
+            $this->cartService->removeProduct($productId);
         }
 
         header("Location: /main");
@@ -67,8 +67,8 @@ class CartController
         $user = $this->authenticationService->getCurrentUser();
         $userId = $user->getId();
 
-        $cartProducts = $this->cartService->getCartProducts($userId);
-        $totalPrice = $this->cartService->getTotalPrice($userId);
+        $userProducts = $this->cartService->getProducts();
+        $totalPrice = $this->cartService->getTotalPrice();
 
         require_once './../View/cart.php';
     }
@@ -82,7 +82,7 @@ class CartController
         $user = $this->authenticationService->getCurrentUser();
         $userId = $user->getId();
 
-        $this->cartService->clearCartByUserId($userId);
+        $this->cartService->clear();
 
         header("Location: /main");
     }
@@ -102,7 +102,7 @@ class CartController
 
             $productId = $request->getProductId();
 
-            $this->cartService->clearProductByUserIdProductId($userId,$productId);
+            $this->cartService->deleteProduct($productId);
         }
 
         header("Location: /cart");

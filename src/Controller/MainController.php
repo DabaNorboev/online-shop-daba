@@ -12,8 +12,6 @@ class MainController
 {
     private ProductRepository $productRepository;
 
-    private UserProductRepository $userProductRepository;
-
     private AuthenticationService $authenticationService;
 
     private CartService $cartService;
@@ -21,7 +19,6 @@ class MainController
     public function __construct()
     {
         $this->productRepository = new ProductRepository();
-        $this->userProductRepository = new UserProductRepository();
         $this->authenticationService = new AuthenticationService();
         $this->cartService = new CartService();
     }
@@ -34,42 +31,11 @@ class MainController
         $user = $this->authenticationService->getCurrentUser();
         $userId = $user->getId();
 
-        $products = $this->addQuantityToProducts($userId);
+        $products = $this->productRepository->getAll();
+        $userProducts = $this->cartService->getProducts();
 
-        $cartCount = $this->cartService->getCartCount($products);
+        $cartCount = $this->cartService->getCount();
 
         require_once './../View/main.php';
-    }
-
-    private function addQuantityToProducts(string $userId): array
-    {
-        $userProducts = $this->userProductRepository->getAllByUserId($userId);
-        $products = $this->productRepository->getAll();
-
-        $productsWithQuantity = [];
-
-        if (empty($userProducts)) {
-            foreach ($products as $product) {
-                $product->setQuantity(0);
-                $productsWithQuantity[] = $product;
-            }
-        }
-        else {
-            foreach ($products as $product) {
-                foreach ($userProducts as $userProduct) {
-
-                    if ($product->getId() === $userProduct->getProduct()->getId()) {
-                        $product->setQuantity($userProduct->getQuantity());
-                        break;
-                    }
-                    else {
-                        $product->setQuantity(0);
-                    }
-                }
-                $productsWithQuantity[] = $product;
-            }
-        }
-
-        return $productsWithQuantity;
     }
 }
