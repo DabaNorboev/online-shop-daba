@@ -55,9 +55,12 @@ class UserController
         if (empty($errors)) {
             $email = $request->getEmail();
 
-            $this->authenticationService->login($email);
-
-            header('Location: /main');
+            if (!$this->authenticationService->login($email,$request->getPassword())){
+                header('Location: /main');
+            }
+            else {
+                $errors['psw'] = 'неправильный email или пароль';
+            }
         }
         require_once './../View/login.php';
     }

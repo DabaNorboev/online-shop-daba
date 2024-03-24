@@ -2,40 +2,48 @@
 
 namespace Service;
 
-use Controller\Admin\OrderController;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
-use Repository\UserProductRepository;
+use Repository\Repository;
 
 class OrderService
 {
     private OrderRepository $orderRepository;
-    private UserProductRepository $userProductRepository;
     private OrderProductRepository $orderProductRepository;
-
+    private Repository $repository;
+    private CartService $cartService;
     public function __construct()
     {
-        $this->userProductRepository = new UserProductRepository();
         $this->orderProductRepository = new OrderProductRepository();
         $this->orderRepository = new OrderRepository();
-        }
+        $this->repository = new Repository();
+        $this->cartService = new CartService();
+    }
 
     public function create(int $userId, string $name, string $phoneNumber, string $address, string $comment): void
     {
-        $this->orderRepository->create($userId, $name, $phoneNumber, $address, $comment);
+        $pdo = $this->repository->getPdo();
 
-        $orderId = $this->orderRepository->getOrderId();
+        $pdo->beginTransaction();
+        try {
+            $this->orderRepository->create($userId, $name, $phoneNumber, $address, $comment);
 
-        $userProducts = $this->userProductRepository->getAllByUserId($userId);
+            $orderId = $this->orderRepository->getOrderId();
 
-        foreach ($userProducts as $userProduct) {
+            $userProducts = $this->cartService->getProducts();
 
-            $productId = $userProduct->getProduct()->getId();
-            $quantity = $userProduct->getQuantity();
+            foreach ($userProducts as $userProduct) {
 
-            $this->orderProductRepository->add($orderId,$productId,$quantity);
+                $productId = $userProduct->getProduct()->getId();
+                $quantity = $userProduct->getQuantity();
+
+                $this->orderProductRepository->add($orderId,$productId,$quantity);
+            }
+
+            $pdo->commit();
+        } catch (\Throwable $exception){
+            $pdo->rollBack();
         }
-
-        $this->userProductRepository->clearByUserId($userId);
+        $this->cartService->clear();
     }
 }

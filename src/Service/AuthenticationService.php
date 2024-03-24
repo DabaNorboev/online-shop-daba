@@ -34,13 +34,21 @@ class AuthenticationService
         return null;
     }
 
-    public function login(string $email): void
+    public function login(string $email, string $password): bool
     {
-        if (!$this->check()) {
-            $user = $this->userRepository->getUserByEmail($email);
+        $user = $this->userRepository->getUserByEmail($email);
 
-            $_SESSION['user_id'] = $user->getId();
+        if (!$user instanceof User){
+            return false;
         }
+
+        if (password_verify($user->getPassword(), $password)){
+            session_start();
+            $_SESSION['user_id'] = $user->getId();
+            return true;
+        }
+
+        return false;
     }
 
     public function logout(): void

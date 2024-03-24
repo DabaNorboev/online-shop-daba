@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Repository\ProductRepository;
-use Repository\UserProductRepository;
 use Service\CartService;
 use Service\AuthenticationService;
 
