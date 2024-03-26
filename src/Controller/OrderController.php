@@ -3,7 +3,7 @@
 namespace Controller;
 
 use Request\OrderRequest;
-use Service\AuthenticationService;
+use Service\Authentication\AuthenticationServiceSession;
 use Service\CartService;
 use Service\OrderService;
 
@@ -13,13 +13,13 @@ class OrderController
 
     private CartService $cartService;
 
-    private AuthenticationService $authenticationService;
+    private AuthenticationServiceSession $authenticationService;
 
     public function __construct()
     {
         $this->orderService = new OrderService();
         $this->cartService = new CartService();
-        $this->authenticationService = new AuthenticationService();
+        $this->authenticationService = new AuthenticationServiceSession();
     }
 
     public function getOrder(): void

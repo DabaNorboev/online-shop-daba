@@ -10,19 +10,17 @@ class OrderService
 {
     private OrderRepository $orderRepository;
     private OrderProductRepository $orderProductRepository;
-    private Repository $repository;
     private CartService $cartService;
     public function __construct()
     {
         $this->orderProductRepository = new OrderProductRepository();
         $this->orderRepository = new OrderRepository();
-        $this->repository = new Repository();
         $this->cartService = new CartService();
     }
 
     public function create(int $userId, string $name, string $phoneNumber, string $address, string $comment): void
     {
-        $pdo = $this->repository->getPdo();
+        $pdo = Repository::getPdo();
 
         $pdo->beginTransaction();
         try {
@@ -40,10 +38,11 @@ class OrderService
                 $this->orderProductRepository->add($orderId,$productId,$quantity);
             }
 
+            $this->cartService->clear();
+
             $pdo->commit();
         } catch (\Throwable $exception){
             $pdo->rollBack();
         }
-        $this->cartService->clear();
     }
 }

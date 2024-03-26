@@ -1,11 +1,11 @@
 <?php
 
-namespace Service;
+namespace Service\Authentication;
 
 use Entity\User;
 use Repository\UserRepository;
 
-class AuthenticationService
+class AuthenticationServiceCookie
 {
     private UserRepository $userRepository;
 
@@ -16,17 +16,13 @@ class AuthenticationService
 
     public function check(): bool
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        return isset($_SESSION['user_id']);
+        return isset($_COOKIE['user_id']);
     }
 
     public function getCurrentUser(): User | null
     {
         if ($this->check()){
-            $userId = $_SESSION['user_id'];
+            $userId = $_COOKIE['user_id'];
 
             return $this->userRepository->getUserById($userId);
         }
@@ -42,9 +38,9 @@ class AuthenticationService
             return false;
         }
 
-        if (password_verify($user->getPassword(), $password)){
-            session_start();
-            $_SESSION['user_id'] = $user->getId();
+        if (password_verify($password, $user->getPassword())){
+
+            setcookie('user_id', $user->getId(), time() + 3600, '/');
             return true;
         }
 
@@ -54,11 +50,8 @@ class AuthenticationService
     public function logout(): void
     {
         if ($this->check()){
-            unset($_SESSION['user_id']);
-            session_unset();
-            session_destroy();
+            // Удаляем куку пользователя
+            setcookie('user_id', '', time() - 3600, '/');
         }
     }
-
-
 }

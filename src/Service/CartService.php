@@ -2,19 +2,20 @@
 
 namespace Service;
 
+use Entity\User;
 use Entity\UserProduct;
 use Repository\UserProductRepository;
-use Entity\User;
+use Service\Authentication\AuthenticationServiceSession;
 
 class CartService
 {
     private UserProductRepository $userProductRepository;
 
-    private AuthenticationService $authenticationService;
+    private AuthenticationServiceSession $authenticationService;
     public function __construct()
     {
         $this->userProductRepository = new UserProductRepository();
-        $this->authenticationService = new AuthenticationService();
+        $this->authenticationService = new AuthenticationServiceSession();
     }
 
     public function getTotalPrice(): int
