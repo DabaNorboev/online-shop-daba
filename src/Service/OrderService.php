@@ -5,17 +5,18 @@ namespace Service;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
 use Repository\Repository;
+use Service\Authentication\AuthenticationServiceInterface;
 
 class OrderService
 {
     private OrderRepository $orderRepository;
     private OrderProductRepository $orderProductRepository;
     private CartService $cartService;
-    public function __construct()
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
         $this->orderProductRepository = new OrderProductRepository();
         $this->orderRepository = new OrderRepository();
-        $this->cartService = new CartService();
+        $this->cartService = new CartService($authenticationService);
     }
 
     public function create(int $userId, string $name, string $phoneNumber, string $address, string $comment): void

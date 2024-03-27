@@ -13,10 +13,10 @@ class CartService
     private UserProductRepository $userProductRepository;
 
     private AuthenticationServiceInterface $authenticationService;
-    public function __construct()
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
         $this->userProductRepository = new UserProductRepository();
-        $this->authenticationService = new AuthenticationSessionService();
+        $this->authenticationService = $authenticationService;
     }
 
     public function getTotalPrice(): int
