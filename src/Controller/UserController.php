@@ -5,17 +5,18 @@ namespace Controller;
 use Repository\UserRepository;
 use Request\LoginRequest;
 use Request\RegistrationRequest;
-use Service\Authentication\AuthenticationServiceSession;
+use Service\Authentication\AuthenticationServiceInterface;
+use Service\Authentication\AuthenticationSessionService;
 
 class UserController
 {
     private UserRepository $userRepository;
-    private AuthenticationServiceSession $authenticationService;
+    private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct()
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
         $this->userRepository = new UserRepository();
-        $this->authenticationService = new AuthenticationServiceSession();
+        $this->authenticationService = $authenticationService;
     }
 
     public function getRegistration(): void
@@ -55,11 +56,11 @@ class UserController
         if (empty($errors)) {
             $email = $request->getEmail();
 
-            if (!$this->authenticationService->login($email,$request->getPassword())){
+            if ($this->authenticationService->login($email,$request->getPassword())){
                 header('Location: /main');
             }
             else {
-                $errors['psw'] = 'неправильный email или пароль';
+                $errors['password'] = 'неправильный email или пароль';
             }
         }
         require_once './../View/login.php';

@@ -19,7 +19,7 @@ class LoginRequest extends Request
     }
     public function getPassword(): string
     {
-        return $this->getBody()['psw'];
+        return $this->getBody()['password'];
     }
     public function validate() : array
     {
@@ -43,10 +43,10 @@ class LoginRequest extends Request
         if (isset($userData['password'])) {
             $password = $userData['password'];
             if (empty($password)) {
-                $errors['psw'] = 'Это поле не должно быть пустым';
+                $errors['password'] = 'Это поле не должно быть пустым';
             }
         } else {
-            $errors['psw'] = 'Это поле не должно быть пустым';
+            $errors['password'] = 'Это поле не должно быть пустым';
         }
 
         return $errors;

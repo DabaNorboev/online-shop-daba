@@ -11,6 +11,8 @@ use Request\LoginRequest;
 use Request\OrderRequest;
 use Request\RegistrationRequest;
 use Request\Request;
+use Service\Authentication\AuthenticationSessionService;
+use Service\CartService;
 
 class App
 {
@@ -36,7 +38,10 @@ class App
 
                 $request = new $requestClass($method, $uri, headers_list(), $_POST);
 
-                $obj = new $class;
+                $authService = new AuthenticationSessionService();
+                $cartService = new CartService();
+
+                $obj = new $class($authService, $cartService);
                 $obj->$method($request);
 
             } else {
