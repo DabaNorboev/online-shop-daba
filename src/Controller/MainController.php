@@ -16,9 +16,9 @@ class MainController
 
     private CartService $cartService;
 
-    public function __construct(AuthenticationServiceInterface $authenticationService, CartService $cartService)
+    public function __construct(AuthenticationServiceInterface $authenticationService, CartService $cartService, ProductRepository $productRepository)
     {
-        $this->productRepository = new ProductRepository();
+        $this->productRepository = $productRepository;
         $this->authenticationService = $authenticationService;
         $this->cartService = $cartService;
     }

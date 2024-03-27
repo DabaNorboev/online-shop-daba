@@ -13,9 +13,9 @@ class UserController
     private UserRepository $userRepository;
     private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct(AuthenticationServiceInterface $authenticationService)
+    public function __construct(AuthenticationServiceInterface $authenticationService, UserRepository $userRepository)
     {
-        $this->userRepository = new UserRepository();
+        $this->userRepository = $userRepository;
         $this->authenticationService = $authenticationService;
     }
 

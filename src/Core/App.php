@@ -2,22 +2,18 @@
 
 namespace Core;
 
-use Controller\CartController;
-use Controller\MainController;
-use Controller\OrderController;
-use Controller\UserController;
-use Request\ChangeProductRequest;
-use Request\LoginRequest;
-use Request\OrderRequest;
-use Request\RegistrationRequest;
 use Request\Request;
-use Service\Authentication\AuthenticationSessionService;
-use Service\CartService;
-use Service\OrderService;
 
 class App
 {
+    private Container $container;
     private array $routes = [];
+
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
+
     public function run(): void
     {
         $uri = $_SERVER['REQUEST_URI'];
@@ -39,11 +35,7 @@ class App
 
                 $request = new $requestClass($method, $uri, headers_list(), $_POST);
 
-                $authService = new AuthenticationSessionService();
-                $cartService = new CartService($authService);
-                $orderService = new OrderService($authService);
-
-                $obj = new $class($authService, $cartService, $orderService);
+                $obj = $this->container->get($class);
                 $obj->$method($request);
 
             } else {
@@ -54,6 +46,10 @@ class App
         }
     }
 
+    public function getClass(string $className)
+    {
+
+    }
     public function get(string $routeName, string $class, string $method, string $requestClass = null): void
     {
         $this->routes[$routeName]['GET'] = [
