@@ -14,48 +14,13 @@ use Request\LoginRequest;
 use Request\OrderRequest;
 use Request\ChangeProductRequest;
 
-use Service\Authentication\AuthenticationSessionService;
-use Service\CartService;
-use Service\OrderService;
-
-use Repository\ProductRepository;
-use Repository\UserRepository;
-
 require_once './../Core/Autoloader.php';
 
 Autoloader::register(dirname(__DIR__));
 
-$container = new Container();
+$services = include './../Config/Services.php';
 
-$container->set(CartController::class, function () {
-    $authService = new AuthenticationSessionService();
-    $cartService = new CartService($authService);
-
-    return new CartController($authService, $cartService);
-});
-
-$container->set(MainController::class, function () {
-    $authService = new AuthenticationSessionService();
-    $cartService = new CartService($authService);
-    $productRepository = new ProductRepository();
-
-    return new MainController($authService, $cartService, $productRepository);
-});
-
-$container->set(UserController::class, function () {
-    $authService = new AuthenticationSessionService();
-    $userRepository = new UserRepository();
-
-    return new UserController($authService, $userRepository);
-});
-
-$container->set(OrderController::class, function () {
-    $authService = new AuthenticationSessionService();
-    $cartService = new CartService($authService);
-    $orderService = new OrderService($authService);
-
-    return new OrderController($authService, $cartService, $orderService);
-});
+$container = new Container($services);
 
 $app = new App($container);
 

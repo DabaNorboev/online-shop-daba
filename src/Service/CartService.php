@@ -13,9 +13,9 @@ class CartService
     private UserProductRepository $userProductRepository;
 
     private AuthenticationServiceInterface $authenticationService;
-    public function __construct(AuthenticationServiceInterface $authenticationService)
+    public function __construct(AuthenticationServiceInterface $authenticationService, UserProductRepository $userProductRepository)
     {
-        $this->userProductRepository = new UserProductRepository();
+        $this->userProductRepository = $userProductRepository;
         $this->authenticationService = $authenticationService;
     }
 

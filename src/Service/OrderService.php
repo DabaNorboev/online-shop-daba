@@ -12,11 +12,11 @@ class OrderService
     private OrderRepository $orderRepository;
     private OrderProductRepository $orderProductRepository;
     private CartService $cartService;
-    public function __construct(AuthenticationServiceInterface $authenticationService)
+    public function __construct(CartService $cartService, OrderRepository $orderRepository, OrderProductRepository $orderProductRepository)
     {
-        $this->orderProductRepository = new OrderProductRepository();
-        $this->orderRepository = new OrderRepository();
-        $this->cartService = new CartService($authenticationService);
+        $this->orderProductRepository = $orderProductRepository;
+        $this->orderRepository = $orderRepository;
+        $this->cartService = $cartService;
     }
 
     public function create(int $userId, string $name, string $phoneNumber, string $address, string $comment): void
