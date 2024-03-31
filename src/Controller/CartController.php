@@ -4,7 +4,6 @@ namespace Controller;
 
 use Request\ChangeProductRequest;
 use Service\Authentication\AuthenticationServiceInterface;
-use Service\Authentication\AuthenticationSessionService;
 use Service\CartService;
 
 class CartController

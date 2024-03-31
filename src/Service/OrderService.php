@@ -5,7 +5,6 @@ namespace Service;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
 use Repository\Repository;
-use Service\Authentication\AuthenticationServiceInterface;
 
 class OrderService
 {
@@ -43,6 +42,24 @@ class OrderService
 
             $pdo->commit();
         } catch (\Throwable $exception){
+            $errorMessage = $exception->getMessage();
+            $errorCode = $exception->getCode();
+            $errorFile = $exception->getFile();
+            $errorLine = $exception->getLine();
+            $errorStackTrace = $exception->getTraceAsString();
+            $errorInfo = $exception->__toString();
+
+            $logMessage = "---------Ошибка при создании заказа---------\n\n"
+                . "Сообщение об ошибке: $errorMessage\n\n"
+                . "Код ошибки: $errorCode\n\n"
+                . "Файл ошибки: $errorFile\n\n"
+                . "Строка ошибки: $errorLine\n\n"
+                . "Стек вызовов:\n$errorStackTrace\n\n"
+                . "Подробная информация об ошибке:\n$errorInfo\n"
+                . "-------------------------------------------\n\n\n";
+
+            $pathToLogFile = './../Storage/Logs/errors.txt';
+            error_log($logMessage, 3, $pathToLogFile);
             $pdo->rollBack();
         }
     }

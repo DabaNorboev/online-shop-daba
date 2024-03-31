@@ -6,8 +6,6 @@ use Repository\UserRepository;
 use Request\LoginRequest;
 use Request\RegistrationRequest;
 use Service\Authentication\AuthenticationServiceInterface;
-use Service\Authentication\AuthenticationSessionService;
-
 class UserController
 {
     private UserRepository $userRepository;

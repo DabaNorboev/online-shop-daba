@@ -4,7 +4,6 @@ namespace Controller;
 
 use Request\OrderRequest;
 use Service\Authentication\AuthenticationServiceInterface;
-use Service\Authentication\AuthenticationSessionService;
 use Service\CartService;
 use Service\OrderService;
 

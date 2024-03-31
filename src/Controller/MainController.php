@@ -4,7 +4,6 @@ namespace Controller;
 
 use Repository\ProductRepository;
 use Service\Authentication\AuthenticationServiceInterface;
-use Service\Authentication\AuthenticationSessionService;
 use Service\CartService;
 
 class MainController
