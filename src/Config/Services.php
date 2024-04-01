@@ -5,6 +5,8 @@ use Controller\MainController;
 use Controller\OrderController;
 use Controller\UserController;
 use Core\Container;
+use Core\Logger;
+use Psr\Log\LoggerInterface;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
 use Repository\ProductRepository;
@@ -16,25 +18,14 @@ use Service\CartService;
 use Service\OrderService;
 
 return [
-    UserRepository::class => function () {
-        return new UserRepository();
-    },
-    ProductRepository::class => function () {
-        return new ProductRepository();
-    },
-    UserProductRepository::class => function () {
-        return new UserProductRepository();
-    },
-    OrderRepository::class => function () {
-        return new OrderRepository();
-    },
-    OrderProductRepository::class => function () {
-        return new OrderProductRepository();
+    LoggerInterface::class => function () {
+        return new Logger();
     },
     AuthenticationServiceInterface::class => function (Container $container) {
         $userRepository = $container->get(UserRepository::class);
+        $logger = $container->get(LoggerInterface::class);
 
-        return new AuthenticationSessionService($userRepository);
+        return new AuthenticationSessionService($userRepository, $logger);
     },
     CartService::class => function (Container $container) {
         $authService = $container->get(AuthenticationServiceInterface::class);
@@ -46,8 +37,9 @@ return [
         $cartService = $container->get(CartService::class);
         $orderRepository = $container->get(OrderRepository::class);
         $orderProductRepository = $container->get(OrderProductRepository::class);
+        $logger = $container->get(LoggerInterface::class);
 
-        return new OrderService($cartService, $orderRepository, $orderProductRepository);
+        return new OrderService($cartService, $orderRepository, $orderProductRepository, $logger);
     },
     CartController::class => function (Container $container) {
         $authService = $container->get(AuthenticationServiceInterface::class);

@@ -3,15 +3,19 @@
 namespace Service\Authentication;
 
 use Entity\User;
+use Psr\Log\LoggerInterface;
 use Repository\UserRepository;
 
 class AuthenticationCookieService implements AuthenticationServiceInterface
 {
     private UserRepository $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    private LoggerInterface $logger;
+
+    public function __construct(UserRepository $userRepository, LoggerInterface $logger)
     {
         $this->userRepository = $userRepository;
+        $this->logger = $logger;
     }
 
     public function check(): bool
@@ -39,8 +43,20 @@ class AuthenticationCookieService implements AuthenticationServiceInterface
         }
 
         if (password_verify($password, $user->getPassword())){
+            $userId = $user->getId();
 
-            setcookie('user_id', $user->getId(), time() + 3600, '/');
+            setcookie('user_id', $userId, time() + 3600, '/');
+
+            $cookieId = $_COOKIE['PHPSESSID'];
+
+            $data = [
+                'email' => 'email: ' . $email,
+                'Id' => 'Id: ' . $userId,
+                'cookie' => 'Cookie: ' . $cookieId
+            ];
+
+            $this->logger->info("Успешная авторизация пользователя", $data);
+
             return true;
         }
 

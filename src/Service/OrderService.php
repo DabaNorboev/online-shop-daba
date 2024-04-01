@@ -2,6 +2,7 @@
 
 namespace Service;
 
+use Psr\Log\LoggerInterface;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
 use Repository\Repository;
@@ -9,13 +10,18 @@ use Repository\Repository;
 class OrderService
 {
     private OrderRepository $orderRepository;
+
     private OrderProductRepository $orderProductRepository;
+
     private CartService $cartService;
-    public function __construct(CartService $cartService, OrderRepository $orderRepository, OrderProductRepository $orderProductRepository)
+
+    private LoggerInterface $logger;
+    public function __construct(CartService $cartService, OrderRepository $orderRepository, OrderProductRepository $orderProductRepository, LoggerInterface $logger)
     {
         $this->orderProductRepository = $orderProductRepository;
         $this->orderRepository = $orderRepository;
         $this->cartService = $cartService;
+        $this->logger = $logger;
     }
 
     public function create(int $userId, string $name, string $phoneNumber, string $address, string $comment): void
@@ -42,24 +48,20 @@ class OrderService
 
             $pdo->commit();
         } catch (\Throwable $exception){
-            $errorMessage = $exception->getMessage();
-            $errorCode = $exception->getCode();
-            $errorFile = $exception->getFile();
-            $errorLine = $exception->getLine();
-            $errorStackTrace = $exception->getTraceAsString();
-            $errorInfo = $exception->__toString();
+            $data = [
+                'message' => 'Сообщение об ошибке: ' . $exception->getMessage(),
+                'code' => 'Код: ' . $exception->getCode(),
+                'file' => 'Файл: ' . $exception->getFile(),
+                'line' => 'Строка: ' . $exception->getLine(),
+                'stackTrace' => 'Стэк: ' . $exception->getTraceAsString(),
+                'details' => 'Подробная информация: ' . $exception->__toString(),
+                'userId' => 'Идентификатор пользователя' . $userId
+            ];
 
-            $logMessage = "---------Ошибка при создании заказа---------\n\n"
-                . "Сообщение об ошибке: $errorMessage\n\n"
-                . "Код ошибки: $errorCode\n\n"
-                . "Файл ошибки: $errorFile\n\n"
-                . "Строка ошибки: $errorLine\n\n"
-                . "Стек вызовов:\n$errorStackTrace\n\n"
-                . "Подробная информация об ошибке:\n$errorInfo\n"
-                . "-------------------------------------------\n\n\n";
+            $this->logger->error('Ошибка при создании заказа', $data);
 
-            $pathToLogFile = './../Storage/Logs/errors.txt';
-            error_log($logMessage, 3, $pathToLogFile);
+            require_once './../View/500.html';
+
             $pdo->rollBack();
         }
     }

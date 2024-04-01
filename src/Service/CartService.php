@@ -6,13 +6,14 @@ use Entity\User;
 use Entity\UserProduct;
 use Repository\UserProductRepository;
 use Service\Authentication\AuthenticationServiceInterface;
-use Service\Authentication\AuthenticationSessionService;
 
 class CartService
 {
     private UserProductRepository $userProductRepository;
 
     private AuthenticationServiceInterface $authenticationService;
+
+
     public function __construct(AuthenticationServiceInterface $authenticationService, UserProductRepository $userProductRepository)
     {
         $this->userProductRepository = $userProductRepository;

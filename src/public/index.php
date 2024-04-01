@@ -15,6 +15,7 @@ use Request\OrderRequest;
 use Request\ChangeProductRequest;
 
 require_once './../Core/Autoloader.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 Autoloader::register(dirname(__DIR__));
 
@@ -39,7 +40,6 @@ $app->post('/add-product', CartController::class, 'addProduct', ChangeProductReq
 $app->post('/rm-product', CartController::class, 'removeProduct', ChangeProductRequest::class);
 $app->post('/clear-product', CartController::class, 'clearProduct', ChangeProductRequest::class);
 $app->post('/clear-cart', CartController::class, 'clearCart', ChangeProductRequest::class);
-$app->post('/rm-product', CartController::class, 'removeProduct', ChangeProductRequest::class);
 //order
 $app->post('/order',OrderController::class, 'postOrder', OrderRequest::class);
 
