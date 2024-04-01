@@ -59,7 +59,7 @@ class App
                 'details' => 'Подробная информация: ' . $exception->__toString()
             ];
 
-            $logger->error('Ошибка', $data);
+            $logger->error("code execution error\n", $data);
 
             require_once './../View/500.html';
         }

@@ -47,6 +47,14 @@ class OrderService
             $this->cartService->clear();
 
             $pdo->commit();
+
+            $data = [
+                'user-id' => "user_id: " . $userId,
+                'order-id' => "order_id: " . $orderId
+            ];
+
+            $this->logger->info("Order is processed\n", $data);
+
         } catch (\Throwable $exception){
             $data = [
                 'message' => 'Сообщение об ошибке: ' . $exception->getMessage(),
@@ -58,7 +66,7 @@ class OrderService
                 'userId' => 'Идентификатор пользователя' . $userId
             ];
 
-            $this->logger->error('Ошибка при создании заказа', $data);
+            $this->logger->error("ORDER ERROR\n", $data);
 
             require_once './../View/500.html';
 

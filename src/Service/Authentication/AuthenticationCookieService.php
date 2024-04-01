@@ -51,11 +51,11 @@ class AuthenticationCookieService implements AuthenticationServiceInterface
 
             $data = [
                 'email' => 'email: ' . $email,
-                'Id' => 'Id: ' . $userId,
-                'cookie' => 'Cookie: ' . $cookieId
+                'User_Id' => 'user_id: ' . $userId,
+                'cookie' => 'cookie: ' . $cookieId
             ];
 
-            $this->logger->info("Успешная авторизация пользователя", $data);
+            $this->logger->info("Authentication successful\n", $data);
 
             return true;
         }

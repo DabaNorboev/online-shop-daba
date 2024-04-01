@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Psr\Log\LoggerInterface;
 use Repository\UserRepository;
 use Request\LoginRequest;
 use Request\RegistrationRequest;
@@ -10,11 +11,13 @@ class UserController
 {
     private UserRepository $userRepository;
     private AuthenticationServiceInterface $authenticationService;
+    private LoggerInterface $logger;
 
-    public function __construct(AuthenticationServiceInterface $authenticationService, UserRepository $userRepository)
+    public function __construct(AuthenticationServiceInterface $authenticationService, UserRepository $userRepository, LoggerInterface $logger)
     {
         $this->userRepository = $userRepository;
         $this->authenticationService = $authenticationService;
+        $this->logger = $logger;
     }
 
     public function getRegistration(): void
@@ -34,6 +37,16 @@ class UserController
             $password = password_hash($password,PASSWORD_DEFAULT);
 
             $this->userRepository->create($name, $email, $password);
+
+            $userId = $this->userRepository->getUserByEmail($email)->getId();
+
+            $data = [
+                'user-id' => "user_id: " . $userId,
+                'name' => "name: " . $name,
+                'email' => "email: " . $email
+            ];
+
+            $this->logger->info("User is registered\n", $data);
 
             header('Location: /login');
         }

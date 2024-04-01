@@ -1,4 +1,19 @@
-[2024-03-31 19:15:30] info: Успешная авторизация пользователяemail: Daba@mail.ru
-Id: 1
+[2024-04-01 14:14:06] info: Authentication successful
+email: Daba@mail.ru
+User_Id: 1
 Session: 024891bf9c1c3d88a242d57bb0b3788b
+
+[2024-04-01 14:27:22] info: User is registered
+user_id: 66
+name: dbaa
+email: wasd@mail.ru
+
+[2024-04-01 14:27:35] info: Authentication successful
+email: wasd@mail.ru
+user_id: 66
+Session: 024891bf9c1c3d88a242d57bb0b3788b
+
+[2024-04-01 14:28:40] info: Order is processed
+user_id: 66
+order_id: 46
 

@@ -57,8 +57,9 @@ return [
     UserController::class => function (Container $container) {
         $authService = $container->get(AuthenticationServiceInterface::class);
         $userRepository = $container->get(UserRepository::class);
+        $logger = $container->get(LoggerInterface::class);
 
-        return new UserController($authService, $userRepository);
+        return new UserController($authService, $userRepository, $logger);
     },
     OrderController::class => function (Container $container) {
         $authService = $container->get(AuthenticationServiceInterface::class);

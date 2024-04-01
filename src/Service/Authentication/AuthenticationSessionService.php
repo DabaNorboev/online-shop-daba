@@ -54,11 +54,11 @@ class AuthenticationSessionService implements AuthenticationServiceInterface
 
             $data = [
                 'email' => 'email: ' . $email,
-                'Id' => 'Id: ' . $userId,
-                'Session' => 'Session: ' . $sessionId
+                'user_Id' => 'user_id: ' . $userId,
+                'Session' => 'session: ' . $sessionId
             ];
 
-            $this->logger->info("Успешная авторизация пользователя", $data);
+            $this->logger->info("Authentication successful\n", $data);
 
             return true;
         }
