@@ -17,3 +17,8 @@ Session: 024891bf9c1c3d88a242d57bb0b3788b
 user_id: 66
 order_id: 46
 
+[2024-04-01 16:09:10] info: Authentication successful
+email: Daba@mail.ru
+user_id: 1
+session: 024891bf9c1c3d88a242d57bb0b3788b
+

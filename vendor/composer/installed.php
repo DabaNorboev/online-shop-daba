@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7b557b5036b5574bb0648dcc8766a818f3de5f1b',
+        'reference' => 'f0a874b407af6163b013d0dcb17308bb293523aa',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,18 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7b557b5036b5574bb0648dcc8766a818f3de5f1b',
+            'reference' => 'f0a874b407af6163b013d0dcb17308bb293523aa',
+            'dev_requirement' => false,
+        ),
+        'dabanorboev/my-pack' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dabanorboev/my-pack',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '51bb9136908bb9d38a94674d5702fec687ceb390',
             'dev_requirement' => false,
         ),
         'psr/log' => array(

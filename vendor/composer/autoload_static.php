@@ -11,12 +11,20 @@ class ComposerStaticInit263a03260adc4d5239cb70faed3a5a1d
         array (
             'Psr\\Log\\' => 8,
         ),
+        'D' => 
+        array (
+            'Dabanorboev\\MyPack\\' => 19,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Dabanorboev\\MyPack\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dabanorboev/my-pack/src',
         ),
     );
 

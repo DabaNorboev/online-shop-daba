@@ -4,8 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d49e4e9e1d7c0a257de1bdf135036473",
+    "content-hash": "71dcbae00144b1b18fff79d9f724b5db",
     "packages": [
+        {
+            "name": "dabanorboev/my-pack",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DabaNorboev/my-pack.git",
+                "reference": "51bb9136908bb9d38a94674d5702fec687ceb390"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DabaNorboev/my-pack/zipball/51bb9136908bb9d38a94674d5702fec687ceb390",
+                "reference": "51bb9136908bb9d38a94674d5702fec687ceb390",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0",
+                "psr/log": "^3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dabanorboev\\MyPack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "daba",
+                    "email": "nored5t@ya.ru"
+                }
+            ],
+            "description": "core",
+            "support": {
+                "issues": "https://github.com/DabaNorboev/my-pack/issues",
+                "source": "https://github.com/DabaNorboev/my-pack/tree/main"
+            },
+            "time": "2024-04-01T15:57:10+00:00"
+        },
         {
             "name": "psr/log",
             "version": "3.0.0",
@@ -60,7 +102,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dabanorboev/my-pack": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

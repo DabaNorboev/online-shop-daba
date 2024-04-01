@@ -1,5 +1,6 @@
 {
     "require": {
-        "psr/log": "^3.0"
+        "psr/log": "^3.0",
+        "dabanorboev/my-pack": "dev-main"
     }
 }
