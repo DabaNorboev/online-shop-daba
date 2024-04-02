@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Dabanorboev\MyPack;
 
 use Psr\Log\LoggerInterface;
 use Request\Request;

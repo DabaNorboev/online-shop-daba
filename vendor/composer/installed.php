@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f0a874b407af6163b013d0dcb17308bb293523aa',
+        'reference' => 'c7186c19025a6f90804a2ebaf607bfc164b988ab',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f0a874b407af6163b013d0dcb17308bb293523aa',
+            'reference' => 'c7186c19025a6f90804a2ebaf607bfc164b988ab',
             'dev_requirement' => false,
         ),
         'dabanorboev/my-pack' => array(

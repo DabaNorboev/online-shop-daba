@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Logger;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
@@ -53,9 +53,19 @@ class Logger implements LoggerInterface
         $message = sprintf('[%s] %s: %s%s', date('Y-m-d H:i:s'), $level, $message.$context."\n", PHP_EOL);
 
         if ($level === LogLevel::ERROR){
-            file_put_contents(dirname(__DIR__) . '/Storage/Logs/errors.txt', $message, FILE_APPEND);
+            $logDirectory = __DIR__ . '/../Storage/Logs/';
+            if (!file_exists($logDirectory)) {
+                mkdir($logDirectory, 0777, true);
+            }
+            $file = $logDirectory . 'errors.txt';
+            file_put_contents($file, $message, FILE_APPEND);
         } elseif ($level === LogLevel::INFO){
-            file_put_contents(dirname(__DIR__) . '/Storage/Logs/info.txt', $message, FILE_APPEND);
+            $logDirectory = __DIR__ . '/../Storage/Logs//';
+            if (!file_exists($logDirectory)) {
+                mkdir($logDirectory, 0777, true);
+            }
+            $file = $logDirectory . 'info.txt';
+            file_put_contents($file, $message, FILE_APPEND);
         }
 
     }

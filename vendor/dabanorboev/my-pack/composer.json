@@ -9,7 +9,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Dabanorboev\\MyPack\\": "src/"
+            "Dabanorboev\\MyPack\\": "Core/"
         }
     },
     "authors": [

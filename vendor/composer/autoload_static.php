@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit263a03260adc4d5239cb70faed3a5a1d
+class ComposerStaticInit95ad5ad690c2233780d5f93ab1ba8c63
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
@@ -24,7 +24,7 @@ class ComposerStaticInit263a03260adc4d5239cb70faed3a5a1d
         ),
         'Dabanorboev\\MyPack\\' => 
         array (
-            0 => __DIR__ . '/..' . '/dabanorboev/my-pack/src',
+            0 => __DIR__ . '/..' . '/dabanorboev/my-pack/Core',
         ),
     );
 
@@ -35,9 +35,9 @@ class ComposerStaticInit263a03260adc4d5239cb70faed3a5a1d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit263a03260adc4d5239cb70faed3a5a1d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit263a03260adc4d5239cb70faed3a5a1d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit263a03260adc4d5239cb70faed3a5a1d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit95ad5ad690c2233780d5f93ab1ba8c63::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit95ad5ad690c2233780d5f93ab1ba8c63::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit95ad5ad690c2233780d5f93ab1ba8c63::$classMap;
 
         }, null, ClassLoader::class);
     }

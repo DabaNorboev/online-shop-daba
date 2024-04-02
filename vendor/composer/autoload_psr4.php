@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
-    'Dabanorboev\\MyPack\\' => array($vendorDir . '/dabanorboev/my-pack/src'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/Core'),
+    'Dabanorboev\\MyPack\\' => array($vendorDir . '/dabanorboev/my-pack/Core'),
 );

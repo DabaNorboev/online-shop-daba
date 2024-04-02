@@ -22,3 +22,27 @@ email: Daba@mail.ru
 user_id: 1
 session: 024891bf9c1c3d88a242d57bb0b3788b
 
+[2024-04-02 12:37:25] info: Authentication successful
+email: Daba@mail.ru
+user_id: 1
+session: 024891bf9c1c3d88a242d57bb0b3788b
+
+[2024-04-02 13:53:44] info: Authentication successful
+email: Daba@mail.ru
+user_id: 1
+session: 024891bf9c1c3d88a242d57bb0b3788b
+
+[2024-04-02 13:55:11] info: Authentication successful
+email: Daba@mail.ru
+user_id: 1
+session: 024891bf9c1c3d88a242d57bb0b3788b
+
+[2024-04-02 13:55:35] info: Order is processed
+user_id: 1
+order_id: 47
+
+[2024-04-02 15:56:15] info: Authentication successful
+email: Daba@mail.ru
+user_id: 1
+session: 024891bf9c1c3d88a242d57bb0b3788b
+

@@ -1,8 +1,10 @@
 <?php
 
-use Core\Autoloader;
-use Core\App;
-use Core\Container;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Dabanorboev\MyPack\Autoloader;
+use Dabanorboev\MyPack\App;
+use Dabanorboev\MyPack\Container;
 
 use Controller\UserController;
 use Controller\MainController;
@@ -14,8 +16,7 @@ use Request\LoginRequest;
 use Request\OrderRequest;
 use Request\ChangeProductRequest;
 
-require_once './../Core/Autoloader.php';
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once '../../vendor/dabanorboev/my-pack/Core/Autoloader.php';
 
 Autoloader::register(dirname(__DIR__));
 
